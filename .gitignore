@@ -288,8 +288,10 @@ cython_debug/
 node_modules/
 jspm_packages/
 
-# Logs
+# Logs (Node.js / npm conventions)
 logs
+!Documents/logs/
+!Documents/logs/**
 *.log
 npm-debug.log*
 yarn-debug.log*
