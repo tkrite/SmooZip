@@ -55,6 +55,7 @@ final class CompressViewModel {
     }
 
     /// 圧縮を実行する
+    @MainActor
     func compress(destination: URL) async {
         guard !selectedFiles.isEmpty else { return }
         isCompressing = true

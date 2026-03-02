@@ -17,6 +17,7 @@ final class DecompressViewModel {
         self.compressionService = compressionService
     }
 
+    @MainActor
     func decompress(destination: URL) async {
         guard let source = selectedFile else { return }
         isDecompressing = true

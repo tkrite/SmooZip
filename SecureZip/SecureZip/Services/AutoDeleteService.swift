@@ -1,6 +1,7 @@
 import Foundation
 
 /// 送付履歴の自動削除スケジュール管理サービス
+@MainActor
 final class AutoDeleteService {
 
     private let historyService: HistoryServiceProtocol
@@ -26,5 +27,5 @@ final class AutoDeleteService {
         timer = nil
     }
 
-    deinit { stopScheduler() }
+    deinit { timer?.invalidate() }
 }

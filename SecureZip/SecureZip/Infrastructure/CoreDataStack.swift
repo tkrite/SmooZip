@@ -21,19 +21,27 @@ final class CoreDataStack {
     private init() {}
 
     lazy var persistentContainer: NSPersistentContainer = {
-        // xcdatamodeld が存在しない場合はインメモリで代替
-        let container: NSPersistentContainer
+        // xcdatamodeld が存在しない場合、またはテスト時はインメモリで代替
         if useInMemoryStore || !modelFileExists() {
-            container = makeInMemoryContainer()
-        } else {
-            container = NSPersistentContainer(name: "SecureZip")
-            container.loadPersistentStores { _, error in
-                if let error {
-                    // フォールバック: インメモリに切り替え
-                    print("⚠️ Core Data 読み込み失敗（インメモリで代替）: \(error)")
-                }
-            }
+            let c = makeInMemoryContainer()
+            c.viewContext.automaticallyMergesChangesFromParent = true
+            return c
         }
+
+        let container = NSPersistentContainer(name: "SecureZip")
+        var loadError: Error?
+        container.loadPersistentStores { _, error in
+            loadError = error
+        }
+
+        if let error = loadError {
+            // ストア読み込み失敗時はインメモリコンテナへフォールバック
+            print("⚠️ Core Data 読み込み失敗、インメモリで代替します: \(error)")
+            let fallback = makeInMemoryContainer()
+            fallback.viewContext.automaticallyMergesChangesFromParent = true
+            return fallback
+        }
+
         container.viewContext.automaticallyMergesChangesFromParent = true
         return container
     }()

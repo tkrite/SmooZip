@@ -11,7 +11,8 @@ protocol GmailServiceProtocol {
         password: String,
         recipient: String,
         subject: String,
-        body: String
+        body: String,
+        separatePassword: Bool
     ) async throws
 }
 
@@ -56,16 +57,17 @@ final class GmailService: GmailServiceProtocol {
         isAuthenticated = false
     }
 
-    /// 暗号化ファイルとパスワードを別メールで送信する
+    /// 暗号化ファイルを送信する
     ///
-    /// 1. 本体メール（暗号化ファイル添付）を送信
-    /// 2. 数秒間隔をあけてパスワード通知メールを送信
+    /// - Parameters:
+    ///   - separatePassword: true の場合、数秒後にパスワード通知メールを別送する
     func sendWithSeparatePassword(
         file: URL,
         password: String,
         recipient: String,
         subject: String,
-        body: String
+        body: String,
+        separatePassword: Bool
     ) async throws {
         guard isAuthenticated else {
             throw SecureZipError.gmailNotAuthenticated
@@ -85,7 +87,8 @@ final class GmailService: GmailServiceProtocol {
             attachment: file
         )
 
-        // 2. 数秒待機してからパスワード通知メール送信
+        // 2. パスワード別送が有効な場合のみ、数秒後にパスワード通知メールを送信
+        guard separatePassword else { return }
         try await Task.sleep(nanoseconds: 3_000_000_000)
         let passwordSubject = "【パスワード通知】\(subject)"
         let passwordBody = "先ほど送付したファイルのパスワードは以下の通りです。\n\nパスワード: \(password)\n\n※このメールは自動送信されています。"

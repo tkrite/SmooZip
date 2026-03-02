@@ -41,13 +41,29 @@ final class PasswordService: PasswordServiceProtocol {
         guard !charset.isEmpty else { return "" }
 
         let charsetArray = Array(charset)
-        var bytes = [UInt8](repeating: 0, count: length)
-        let status = SecRandomCopyBytes(kSecRandomDefault, length, &bytes)
-        guard status == errSecSuccess else {
-            // フォールバック（通常は発生しない）
-            return String((0..<length).map { _ in charsetArray.randomElement()! })
+        let charsetCount = charsetArray.count
+
+        // rejection sampling: モジュロバイアスを除去するため
+        // 256 が charsetCount で割り切れない場合、末尾の余り分のバイトを棄却して再抽選する
+        let acceptLimit = UInt8((256 / charsetCount) * charsetCount)
+
+        var result: [Character] = []
+        result.reserveCapacity(length)
+
+        while result.count < length {
+            var byte: UInt8 = 0
+            let status = SecRandomCopyBytes(kSecRandomDefault, 1, &byte)
+            guard status == errSecSuccess else {
+                // SecRandomCopyBytes の失敗は通常発生しないが、フォールバックとして randomElement を使用
+                result.append(charsetArray.randomElement()!)
+                continue
+            }
+            // acceptLimit 未満のバイトのみ採用（均等分布を保証）
+            if byte < acceptLimit {
+                result.append(charsetArray[Int(byte) % charsetCount])
+            }
         }
-        return String(bytes.map { charsetArray[Int($0) % charsetArray.count] })
+        return String(result)
     }
 
     /// パスワード強度を評価する

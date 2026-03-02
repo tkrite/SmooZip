@@ -37,7 +37,7 @@ final class GmailAPIClient {
 
         // MIME メッセージを構築して Base64URL エンコード
         let mimeData = try buildMIMEMessage(to: recipient, subject: subject, body: body, attachment: attachment)
-        let rawMessage = base64URLEncode(mimeData)
+        let rawMessage = mimeData.base64URLEncoded
 
         // リクエストを構築
         var request = URLRequest(url: Self.sendEndpoint)
@@ -104,11 +104,11 @@ final class GmailAPIClient {
             // --- 添付ファイルパート ---
             let attachmentData = try Data(contentsOf: attachment)
             let encodedAttachment = attachmentData.base64EncodedString(options: [.lineLength76Characters, .endLineWithCarriageReturn])
-            let filename = rfc2047Encode(attachment.lastPathComponent)
+            let encodedFilename = attachment.lastPathComponent.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? attachment.lastPathComponent
 
             mime += "--\(boundary)\r\n"
             mime += "Content-Type: application/octet-stream\r\n"
-            mime += "Content-Disposition: attachment; filename*=UTF-8''\(attachment.lastPathComponent.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? attachment.lastPathComponent)\r\n"
+            mime += "Content-Disposition: attachment; filename*=UTF-8''\(encodedFilename)\r\n"
             mime += "Content-Transfer-Encoding: base64\r\n"
             mime += "\r\n"
             mime += encodedAttachment
@@ -145,10 +145,4 @@ final class GmailAPIClient {
         return message
     }
 
-    private func base64URLEncode(_ data: Data) -> String {
-        data.base64EncodedString()
-            .replacingOccurrences(of: "+", with: "-")
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "=", with: "")
-    }
 }

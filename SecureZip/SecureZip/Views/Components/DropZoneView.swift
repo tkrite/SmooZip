@@ -47,7 +47,11 @@ struct DropZoneView: View {
     private func handleDrop(providers: [NSItemProvider]) -> Bool {
         var handled = false
         for provider in providers {
-            provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier) { item, _ in
+            provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier) { item, error in
+                if let error {
+                    print("⚠️ DropZoneView: ファイルの読み込みに失敗しました: \(error.localizedDescription)")
+                    return
+                }
                 guard let data = item as? Data,
                       let url = URL(dataRepresentation: data, relativeTo: nil) else { return }
                 DispatchQueue.main.async { files.append(url) }

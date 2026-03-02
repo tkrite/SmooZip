@@ -22,10 +22,13 @@ final class SendViewModel {
     // MARK: - Dependencies
 
     private let gmailService: GmailServiceProtocol
+    private let passwordService: PasswordServiceProtocol
     private var sendTask: Task<Void, Error>?
 
-    init(gmailService: GmailServiceProtocol = GmailService()) {
+    init(gmailService: GmailServiceProtocol = GmailService(),
+         passwordService: PasswordServiceProtocol = PasswordService()) {
         self.gmailService = gmailService
+        self.passwordService = passwordService
     }
 
     var isGmailAuthenticated: Bool { gmailService.isAuthenticated }
@@ -33,7 +36,7 @@ final class SendViewModel {
     // MARK: - Validation
 
     var canSend: Bool {
-        isValidEmail(recipientEmail)
+        recipientEmail.isValidEmail
         && selectedFile != nil
         && !isSending
         && gmailService.isAuthenticated
@@ -76,7 +79,8 @@ final class SendViewModel {
                     password: password,
                     recipient: recipientEmail,
                     subject: subject.isEmpty ? "ファイルを送付します" : subject,
-                    body: body
+                    body: body,
+                    separatePassword: isSeparatePasswordEnabled
                 )
                 await MainActor.run {
                     isSending = false
@@ -103,7 +107,7 @@ final class SendViewModel {
     }
 
     func generatePassword() {
-        password = PasswordService().generatePassword(
+        password = passwordService.generatePassword(
             length: PasswordService.defaultLength,
             includeUppercase: true,
             includeLowercase: true,
@@ -112,10 +116,4 @@ final class SendViewModel {
         )
     }
 
-    // MARK: - Private
-
-    private func isValidEmail(_ email: String) -> Bool {
-        let pattern = #"^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"#
-        return email.range(of: pattern, options: .regularExpression) != nil
-    }
 }

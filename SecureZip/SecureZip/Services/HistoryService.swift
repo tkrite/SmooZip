@@ -32,9 +32,12 @@ struct HistoryItem: Identifiable, Sendable {
 final class HistoryService: HistoryServiceProtocol {
 
     private let coreDataStack: CoreDataStack
+    private let keychainService: KeychainServiceProtocol
 
-    init(coreDataStack: CoreDataStack = .shared) {
+    init(coreDataStack: CoreDataStack = .shared,
+         keychainService: KeychainServiceProtocol = KeychainService()) {
         self.coreDataStack = coreDataStack
+        self.keychainService = keychainService
     }
 
     // MARK: - Fetch
@@ -53,8 +56,7 @@ final class HistoryService: HistoryServiceProtocol {
     // MARK: - Save
 
     func save(_ item: HistoryItem) async throws {
-        try await coreDataStack.performBackground { [weak self] context in
-            guard let self else { return }
+        try await coreDataStack.performBackground { context in
 
             // Recipient を upsert
             let recipientRequest = NSFetchRequest<NSManagedObject>(entityName: "RecipientEntity")
@@ -108,8 +110,7 @@ final class HistoryService: HistoryServiceProtocol {
     // MARK: - Delete
 
     func delete(id: UUID) async throws {
-        try await coreDataStack.performBackground { [weak self] context in
-            guard let self else { return }
+        try await coreDataStack.performBackground { context in
             let request = NSFetchRequest<NSManagedObject>(entityName: "SendHistoryEntity")
             request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
             let results = try context.fetch(request)
@@ -120,8 +121,7 @@ final class HistoryService: HistoryServiceProtocol {
 
     /// expiresAt が現在時刻を過ぎた履歴を削除する
     func deleteExpired() async throws {
-        try await coreDataStack.performBackground { [weak self] context in
-            guard let self else { return }
+        try await coreDataStack.performBackground { context in
             let request = NSFetchRequest<NSManagedObject>(entityName: "SendHistoryEntity")
             request.predicate = NSPredicate(
                 format: "expiresAt != nil AND expiresAt < %@",
@@ -129,9 +129,9 @@ final class HistoryService: HistoryServiceProtocol {
             )
             let expired = try context.fetch(request)
             for obj in expired {
-                // 対応する Keychain パスワードも削除
+                // DI された keychainService で対応するパスワードも削除
                 if let id = obj.value(forKey: "id") as? UUID {
-                    try? KeychainService().deletePassword(historyID: id)
+                    try? self.keychainService.deletePassword(historyID: id)
                 }
                 context.delete(obj)
             }
