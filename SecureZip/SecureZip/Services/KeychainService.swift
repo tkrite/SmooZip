@@ -5,10 +5,10 @@ import Security
 
 /// Keychain に保存するデータのキー定義
 enum KeychainKey: String {
-    case gmailAccessToken  = "com.securezip.gmail.accessToken"
-    case gmailRefreshToken = "com.securezip.gmail.refreshToken"
-    /// パスワードは "com.securezip.password." + historyID で保存
-    static let passwordPrefix = "com.securezip.password."
+    case gmailAccessToken  = "com.tkrite.SecureZip.gmail.accessToken"
+    case gmailRefreshToken = "com.tkrite.SecureZip.gmail.refreshToken"
+    /// パスワードは "com.tkrite.SecureZip.password." + historyID で保存
+    static let passwordPrefix = "com.tkrite.SecureZip.password."
 }
 
 // MARK: - Protocol
