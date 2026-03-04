@@ -18,7 +18,7 @@
 "compress.dropzone"      = "ファイルをドロップ、または";
 "compress.selectFile"    = "ファイルを選択...";
 "compress.format"        = "圧縮形式";
-"compress.encrypt"       = "パスワード保護 (ZipCrypto)";
+"compress.encrypt"       = "AES-256 暗号化";
 "compress.password"      = "パスワード";
 "compress.generatePW"    = "自動生成";
 "compress.run"           = "圧縮する";
