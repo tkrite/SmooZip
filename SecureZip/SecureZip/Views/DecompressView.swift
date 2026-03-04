@@ -3,7 +3,7 @@ import AppKit
 
 struct DecompressView: View {
 
-    @State private var vm = DecompressViewModel()
+    @StateObject private var vm = DecompressViewModel()
 
     var body: some View {
         VStack(spacing: 0) {

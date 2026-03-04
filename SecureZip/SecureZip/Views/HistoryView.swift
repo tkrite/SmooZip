@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HistoryView: View {
 
-    @State private var vm = HistoryViewModel()
+    @StateObject private var vm = HistoryViewModel()
 
     var body: some View {
         VStack(spacing: 0) {
@@ -18,11 +18,18 @@ struct HistoryView: View {
             if vm.isLoading {
                 ProgressView().padding()
             } else if vm.filteredItems.isEmpty {
-                ContentUnavailableView(
-                    "送付履歴はありません",
-                    systemImage: "clock.badge.xmark",
-                    description: Text("ファイルを送付すると履歴が表示されます。")
-                )
+                VStack(spacing: 8) {
+                    Image(systemName: "clock.badge.xmark")
+                        .font(.system(size: 48))
+                        .foregroundStyle(.secondary)
+                    Text("送付履歴はありません")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                    Text("ファイルを送付すると履歴が表示されます。")
+                        .font(.subheadline)
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 List(vm.filteredItems) { item in
                     HStack {

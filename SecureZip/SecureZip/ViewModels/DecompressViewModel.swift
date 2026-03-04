@@ -1,15 +1,14 @@
 import Foundation
-import Observation
+import Combine
 
-@Observable
-final class DecompressViewModel {
+final class DecompressViewModel: ObservableObject {
 
-    var selectedFile: URL?
-    var password: String = ""
-    var progress: Double = 0
-    var isDecompressing: Bool = false
-    var errorMessage: String?
-    var isCompleted: Bool = false
+    @Published var selectedFile: URL?
+    @Published var password: String = ""
+    @Published var progress: Double = 0
+    @Published var isDecompressing: Bool = false
+    @Published var errorMessage: String?
+    @Published var isCompleted: Bool = false
 
     private let compressionService: CompressionServiceProtocol
 

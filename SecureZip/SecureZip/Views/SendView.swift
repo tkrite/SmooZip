@@ -3,7 +3,7 @@ import AppKit
 
 struct SendView: View {
 
-    @State private var vm = SendViewModel()
+    @StateObject private var vm = SendViewModel()
 
     var body: some View {
         ZStack {
@@ -18,11 +18,18 @@ struct SendView: View {
                 Divider()
 
                 if !vm.isGmailAuthenticated {
-                    ContentUnavailableView(
-                        "Gmail 連携が必要です",
-                        systemImage: "envelope.badge.shield.half.filled",
-                        description: Text("設定画面から Gmail と連携してください。")
-                    )
+                    VStack(spacing: 8) {
+                        Image(systemName: "envelope.badge.shield.half.filled")
+                            .font(.system(size: 48))
+                            .foregroundStyle(.secondary)
+                        Text("Gmail 連携が必要です")
+                            .font(.headline)
+                            .foregroundStyle(.secondary)
+                        Text("設定画面から Gmail と連携してください。")
+                            .font(.subheadline)
+                            .foregroundStyle(.tertiary)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     ScrollView {
                         VStack(alignment: .leading, spacing: 16) {

@@ -1,13 +1,12 @@
 import Foundation
-import Observation
+import Combine
 
-@Observable
-final class HistoryViewModel {
+final class HistoryViewModel: ObservableObject {
 
-    var items: [HistoryItem] = []
-    var searchText: String = ""
-    var isLoading: Bool = false
-    var errorMessage: String?
+    @Published var items: [HistoryItem] = []
+    @Published var searchText: String = ""
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
 
     private let historyService: HistoryServiceProtocol
 

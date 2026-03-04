@@ -23,7 +23,7 @@ struct DropZoneView: View {
             VStack(spacing: 8) {
                 Image(systemName: "arrow.down.doc")
                     .font(.system(size: 32))
-                    .foregroundStyle(isDragging ? .accentColor : .secondary)
+                    .foregroundStyle(isDragging ? Color.accentColor : Color.secondary)
 
                 if files.isEmpty {
                     Text("ファイルをドロップ、または")

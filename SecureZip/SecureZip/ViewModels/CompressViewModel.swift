@@ -1,20 +1,19 @@
 import Foundation
-import Observation
+import Combine
 
-@Observable
-final class CompressViewModel {
+final class CompressViewModel: ObservableObject {
 
     // MARK: - State
 
-    var selectedFiles: [URL] = []
-    var format: CompressionFormat = .zip
-    var isEncryptionEnabled: Bool = false
-    var password: String = ""
-    var passwordStrength: PasswordStrength = .weak
-    var progress: Double = 0
-    var isCompressing: Bool = false
-    var errorMessage: String?
-    var outputURL: URL?
+    @Published var selectedFiles: [URL] = []
+    @Published var format: CompressionFormat = .zip
+    @Published var isEncryptionEnabled: Bool = false
+    @Published var password: String = ""
+    @Published var passwordStrength: PasswordStrength = .weak
+    @Published var progress: Double = 0
+    @Published var isCompressing: Bool = false
+    @Published var errorMessage: String?
+    @Published var outputURL: URL?
 
     // MARK: - Dependencies
 

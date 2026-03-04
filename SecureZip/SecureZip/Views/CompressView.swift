@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 
 struct CompressView: View {
 
-    @State private var vm = CompressViewModel()
+    @StateObject private var vm = CompressViewModel()
     @State private var showPasswordGenerator = false
 
     var body: some View {
@@ -37,7 +37,7 @@ struct CompressView: View {
                     }
 
                     // 暗号化
-                    GroupBox("パスワード保護 (ZipCrypto)") {
+                    GroupBox("AES-256 暗号化") {
                         VStack(alignment: .leading, spacing: 8) {
                             Toggle("暗号化を有効にする", isOn: $vm.isEncryptionEnabled)
                                 .disabled(!vm.format.supportsEncryption)
@@ -51,7 +51,7 @@ struct CompressView: View {
                             if vm.isEncryptionEnabled {
                                 HStack {
                                     SecureField("パスワード", text: $vm.password)
-                                        .onChange(of: vm.password) { _, _ in
+                                        .onChange(of: vm.password) { _ in
                                             vm.updatePasswordStrength()
                                         }
                                     Button("自動生成") {
