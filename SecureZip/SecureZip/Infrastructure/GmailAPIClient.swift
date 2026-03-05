@@ -98,6 +98,7 @@ final class GmailAPIClient {
             )
         }
 
+        let keychain = keychainService
         return try await withCheckedThrowingContinuation { continuation in
             user.refreshTokensIfNeeded { updatedUser, error in
                 if let error = error {
@@ -112,7 +113,7 @@ final class GmailAPIClient {
                     return
                 }
                 if let tokenData = newToken.data(using: .utf8) {
-                    try? KeychainService().save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
+                    try? keychain.save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
                 }
                 continuation.resume(returning: newToken)
             }

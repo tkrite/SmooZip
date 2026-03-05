@@ -13,7 +13,7 @@ enum KeychainKey: String {
 
 // MARK: - Protocol
 
-protocol KeychainServiceProtocol {
+protocol KeychainServiceProtocol: Sendable {
     func save(_ data: Data, for key: String) throws
     func load(for key: String) throws -> Data
     func delete(for key: String) throws
@@ -28,7 +28,7 @@ protocol KeychainServiceProtocol {
 ///
 /// パスワード・OAuth トークンをセキュアに保管する。
 /// kSecAttrAccessibleWhenUnlockedThisDeviceOnly を使用し、iCloud 同期を無効化する。
-final class KeychainService: KeychainServiceProtocol {
+final class KeychainService: KeychainServiceProtocol, @unchecked Sendable {
 
     func save(_ data: Data, for key: String) throws {
         let query: [String: Any] = [

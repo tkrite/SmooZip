@@ -44,6 +44,7 @@ final class GmailService: GmailServiceProtocol {
 
     /// Gmail OAuth 認証を開始する
     func authenticate() async throws {
+        let keychain = keychainService
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             DispatchQueue.main.async {
                 guard let window = NSApplication.shared.keyWindow else {
@@ -62,8 +63,7 @@ final class GmailService: GmailServiceProtocol {
                     do {
                         if let user = GIDSignIn.sharedInstance.currentUser,
                            let tokenData = user.accessToken.tokenString.data(using: .utf8) {
-                            // KeychainService はステートレスなので毎回インスタンス化して安全に使用できる
-                            try KeychainService().save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
+                            try keychain.save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
                         }
                         continuation.resume()
                     } catch {
