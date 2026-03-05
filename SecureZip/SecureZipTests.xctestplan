@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "414EC534-0837-4CAD-B89C-C82D0983412E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "enabled" : true,
+      "target" : {
+        "containerPath" : "container:SecureZip.xcodeproj",
+        "identifier" : "D54255DD2F593C6C00D1887D",
+        "name" : "SecureZipTests"
+      }
+    }
+  ],
+  "version" : 1
+}

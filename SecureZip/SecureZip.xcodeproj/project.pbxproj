@@ -13,16 +13,33 @@
 		D542533B2F55804700D1887D /* SecureZip.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D54253392F55804700D1887D /* SecureZip.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D54255F92F593D9400D1887D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D54252C72F557B0B00D1887D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D54252CE2F557B0B00D1887D;
+			remoteInfo = SecureZip;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D54252CF2F557B0B00D1887D /* SecureZip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureZip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D54253382F557F4E00D1887D /* SecureZip-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "SecureZip-Bridging-Header.h"; path = "SecureZip/SecureZip-Bridging-Header.h"; sourceTree = "<group>"; };
 		D542533A2F55804700D1887D /* SecureZip.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SecureZip.xcdatamodel; sourceTree = "<group>"; };
+		D54255DE2F593C6C00D1887D /* SecureZipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecureZipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D54255FB2F59404700D1887D /* SecureZipTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SecureZipTests.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D54252D12F557B0B00D1887D /* SecureZip */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SecureZip;
+			sourceTree = "<group>";
+		};
+		D54255DF2F593C6C00D1887D /* SecureZipTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SecureZipTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -38,15 +55,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D54255DB2F593C6C00D1887D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D54252C62F557B0B00D1887D = {
 			isa = PBXGroup;
 			children = (
+				D54255FB2F59404700D1887D /* SecureZipTests.xctestplan */,
 				D54253392F55804700D1887D /* SecureZip.xcdatamodeld */,
 				D54253382F557F4E00D1887D /* SecureZip-Bridging-Header.h */,
 				D54252D12F557B0B00D1887D /* SecureZip */,
+				D54255DF2F593C6C00D1887D /* SecureZipTests */,
 				D54252D02F557B0B00D1887D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				D54252CF2F557B0B00D1887D /* SecureZip.app */,
+				D54255DE2F593C6C00D1887D /* SecureZipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +114,29 @@
 			productReference = D54252CF2F557B0B00D1887D /* SecureZip.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D54255DD2F593C6C00D1887D /* SecureZipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D54255E42F593C6D00D1887D /* Build configuration list for PBXNativeTarget "SecureZipTests" */;
+			buildPhases = (
+				D54255DA2F593C6C00D1887D /* Sources */,
+				D54255DB2F593C6C00D1887D /* Frameworks */,
+				D54255DC2F593C6C00D1887D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D54255FA2F593D9400D1887D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				D54255DF2F593C6C00D1887D /* SecureZipTests */,
+			);
+			name = SecureZipTests;
+			packageProductDependencies = (
+			);
+			productName = SecureZipTests;
+			productReference = D54255DE2F593C6C00D1887D /* SecureZipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +149,10 @@
 				TargetAttributes = {
 					D54252CE2F557B0B00D1887D = {
 						CreatedOnToolsVersion = 26.3;
+					};
+					D54255DD2F593C6C00D1887D = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = D54252CE2F557B0B00D1887D;
 					};
 				};
 			};
@@ -121,12 +175,20 @@
 			projectRoot = "";
 			targets = (
 				D54252CE2F557B0B00D1887D /* SecureZip */,
+				D54255DD2F593C6C00D1887D /* SecureZipTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D54252CD2F557B0B00D1887D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D54255DC2F593C6C00D1887D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +206,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D54255DA2F593C6C00D1887D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D54255FA2F593D9400D1887D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D54252CE2F557B0B00D1887D /* SecureZip */;
+			targetProxy = D54255F92F593D9400D1887D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D54252D82F557B0D00D1887D /* Debug */ = {
@@ -277,11 +354,11 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Info.plist";
-				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/libarchive/include";
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				INFOPLIST_FILE = Info.plist;
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/libarchive/lib";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libarchive/lib;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				"OTHER_LDFLAGS[arch=*]" = "-larchive";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZip;
@@ -308,11 +385,11 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Info.plist";
-				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/libarchive/include";
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				INFOPLIST_FILE = Info.plist;
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/libarchive/lib";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libarchive/lib;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				"OTHER_LDFLAGS[arch=*]" = "-larchive";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZip;
@@ -322,6 +399,51 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "SecureZip/SecureZip-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D54255E22F593C6D00D1887D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3529GL9CD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecureZip.app/Contents/MacOS/SecureZip";
+			};
+			name = Debug;
+		};
+		D54255E32F593C6D00D1887D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3529GL9CD6;
+				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecureZip.app/Contents/MacOS/SecureZip";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -342,6 +464,15 @@
 			buildConfigurations = (
 				D54252DB2F557B0D00D1887D /* Debug */,
 				D54252DC2F557B0D00D1887D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D54255E42F593C6D00D1887D /* Build configuration list for PBXNativeTarget "SecureZipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D54255E22F593C6D00D1887D /* Debug */,
+				D54255E32F593C6D00D1887D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
