@@ -38,6 +38,30 @@ private final class MockPasswordService: PasswordServiceProtocol {
     func evaluateStrength(_ password: String) -> PasswordStrength { .strong }
 }
 
+private final class MockCompressionService: CompressionServiceProtocol {
+    var compressError: Error?
+
+    func compress(
+        sources: [URL],
+        destination: URL,
+        format: CompressionFormat,
+        password: String?,
+        progress: @escaping @Sendable (Double) -> Void
+    ) async throws {
+        if let error = compressError { throw error }
+        progress(1.0)
+    }
+
+    func decompress(
+        source: URL,
+        destination: URL,
+        password: String?,
+        progress: @escaping @Sendable (Double) -> Void
+    ) async throws {
+        progress(1.0)
+    }
+}
+
 private final class MockHistoryService: HistoryServiceProtocol {
     func fetchAll() async throws -> [HistoryItem] { [] }
     func save(_ item: HistoryItem) async throws {}
@@ -65,15 +89,18 @@ final class SendViewModelTests: XCTestCase {
 
     private var sut: SendViewModel!
     private var gmailService: MockGmailService!
+    private var compressionService: MockCompressionService!
     private var passwordService: MockPasswordService!
     private var historyService: MockHistoryService!
 
     override func setUp() {
         gmailService = MockGmailService()
+        compressionService = MockCompressionService()
         passwordService = MockPasswordService()
         historyService = MockHistoryService()
         sut = SendViewModel(
             gmailService: gmailService,
+            compressionService: compressionService,
             passwordService: passwordService,
             historyService: historyService
         )
