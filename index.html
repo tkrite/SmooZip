@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecureZip - Privacy Policy / プライバシーポリシー</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      color: #1d1d1f;
+      line-height: 1.7;
+    }
+    h1 { font-size: 2em; margin-bottom: 4px; }
+    h2 { font-size: 1.2em; margin-top: 2em; border-bottom: 1px solid #d2d2d7; padding-bottom: 6px; }
+    .lang-switch { margin-bottom: 32px; }
+    .lang-switch a { color: #0071e3; text-decoration: none; margin-right: 12px; }
+    .lang-switch a:hover { text-decoration: underline; }
+    .updated { color: #6e6e73; font-size: 0.9em; margin-bottom: 32px; }
+    section { margin-bottom: 2em; }
+    .en { display: none; }
+    ul { padding-left: 1.4em; }
+    li { margin-bottom: 4px; }
+    a { color: #0071e3; }
+  </style>
+  <script>
+    function showLang(lang) {
+      document.querySelectorAll('.ja').forEach(el => el.style.display = lang === 'ja' ? '' : 'none');
+      document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+    }
+    window.onload = function() {
+      var userLang = navigator.language || 'ja';
+      showLang(userLang.startsWith('ja') ? 'ja' : 'en');
+    };
+  </script>
+</head>
+<body>
+
+  <div class="lang-switch">
+    <a href="#" onclick="showLang('ja'); return false;">日本語</a>
+    <a href="#" onclick="showLang('en'); return false;">English</a>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="ja">
+    <h1>プライバシーポリシー</h1>
+    <p class="updated">最終更新日：2026年3月5日</p>
+
+    <section>
+      <p>SecureZip（以下「本アプリ」）は、個人開発者 murakami-akane が提供する macOS 向けアプリケーションです。本ポリシーは、本アプリがどのような情報を取り扱うかを説明します。</p>
+    </section>
+
+    <section>
+      <h2>1. 収集する情報</h2>
+      <p>本アプリが収集・保存する情報は以下のみです：</p>
+      <ul>
+        <li><strong>Gmail メールアドレス</strong>：Gmail 連携時に取得します。お使いのデバイスの Keychain にのみ保存され、外部サーバーには送信されません。</li>
+        <li><strong>送付履歴</strong>：送付先メールアドレス・ファイル名・送信日時をデバイス内の Core Data（ローカルデータベース）に保存します。設定した日数が経過すると自動削除されます。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. 収集しない情報</h2>
+      <p>本アプリは以下の情報を一切収集しません：</p>
+      <ul>
+        <li>アナリティクス・利用統計データ</li>
+        <li>広告識別子</li>
+        <li>位置情報</li>
+        <li>ファイルの内容</li>
+        <li>クラッシュレポート（開発者への自動送信なし）</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Gmail API の利用</h2>
+      <p>本アプリは Gmail API を通じてメール送信を行います。使用する OAuth 2.0 スコープは <code>gmail.send</code> のみであり、メールの読み取り・削除・連絡先へのアクセスは行いません。認証トークンはデバイスの Keychain に保存され、開発者を含む第三者がアクセスすることはできません。</p>
+      <p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a> に準拠しています。</p>
+    </section>
+
+    <section>
+      <h2>4. 第三者への情報提供</h2>
+      <p>本アプリは、ユーザーの情報を第三者に販売・提供・共有しません。</p>
+    </section>
+
+    <section>
+      <h2>5. データの保管場所</h2>
+      <p>すべてのデータはユーザーのデバイス上にのみ保存されます。開発者のサーバーやクラウドサービスにデータが送信されることはありません。</p>
+    </section>
+
+    <section>
+      <h2>6. データの削除</h2>
+      <p>アプリをアンインストールすることで、Core Data に保存されたすべての履歴データが削除されます。Keychain に保存された認証情報は、アプリ内の「設定 → Gmail 連携解除」から削除できます。</p>
+    </section>
+
+    <section>
+      <h2>7. お子様のプライバシー</h2>
+      <p>本アプリは 13 歳未満のお子様を対象としておらず、意図的にお子様の情報を収集することはありません。</p>
+    </section>
+
+    <section>
+      <h2>8. ポリシーの変更</h2>
+      <p>本ポリシーは必要に応じて更新されることがあります。変更がある場合は、このページの「最終更新日」を更新します。</p>
+    </section>
+
+    <section>
+      <h2>9. お問い合わせ</h2>
+      <p>本ポリシーに関するご質問は、App Store のサポートページよりお問い合わせください。</p>
+    </section>
+  </div>
+
+  <!-- English -->
+  <div class="en">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 5, 2026</p>
+
+    <section>
+      <p>SecureZip ("the App") is a macOS application developed by murakami-akane. This policy explains what information the App handles.</p>
+    </section>
+
+    <section>
+      <h2>1. Information We Collect</h2>
+      <p>The App collects and stores only the following information:</p>
+      <ul>
+        <li><strong>Gmail email address</strong>: Obtained when connecting to Gmail. Stored only in your device's Keychain and never transmitted to external servers.</li>
+        <li><strong>Send history</strong>: Recipient email address, file name, and send date/time are stored in Core Data (local database) on your device. This data is automatically deleted after the number of days you configure.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>2. Information We Do Not Collect</h2>
+      <p>The App does not collect any of the following:</p>
+      <ul>
+        <li>Analytics or usage statistics</li>
+        <li>Advertising identifiers</li>
+        <li>Location data</li>
+        <li>File contents</li>
+        <li>Crash reports (no automatic reporting to the developer)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Use of Gmail API</h2>
+      <p>The App uses the Gmail API solely to send emails. The only OAuth 2.0 scope used is <code>gmail.send</code>. The App does not read, delete, or access your emails or contacts. Authentication tokens are stored in your device's Keychain and cannot be accessed by the developer or any third party.</p>
+      <p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>4. Sharing of Information</h2>
+      <p>The App does not sell, provide, or share your information with any third party.</p>
+    </section>
+
+    <section>
+      <h2>5. Data Storage</h2>
+      <p>All data is stored solely on your device. No data is transmitted to the developer's servers or any cloud service.</p>
+    </section>
+
+    <section>
+      <h2>6. Data Deletion</h2>
+      <p>Uninstalling the App will delete all history data stored in Core Data. Authentication credentials stored in Keychain can be removed via Settings → Disconnect Gmail within the App.</p>
+    </section>
+
+    <section>
+      <h2>7. Children's Privacy</h2>
+      <p>The App is not directed at children under the age of 13, and we do not knowingly collect information from children.</p>
+    </section>
+
+    <section>
+      <h2>8. Changes to This Policy</h2>
+      <p>This policy may be updated from time to time. When changes are made, the "Last updated" date on this page will be revised.</p>
+    </section>
+
+    <section>
+      <h2>9. Contact</h2>
+      <p>For questions about this policy, please contact us via the support page on the App Store.</p>
+    </section>
+  </div>
+
+</body>
+</html>
