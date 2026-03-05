@@ -51,7 +51,7 @@ struct CompressView: View {
                             if vm.isEncryptionEnabled {
                                 HStack {
                                     SecureField("パスワード", text: $vm.password)
-                                        .onChange(of: vm.password) { _ in
+                                        .onChange(of: vm.password) {
                                             vm.updatePasswordStrength()
                                         }
                                     Button("自動生成") {

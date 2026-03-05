@@ -44,7 +44,6 @@ final class GmailService: GmailServiceProtocol {
 
     /// Gmail OAuth 認証を開始する
     func authenticate() async throws {
-        let keychain = keychainService
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             DispatchQueue.main.async {
                 guard let window = NSApplication.shared.keyWindow else {
@@ -58,16 +57,8 @@ final class GmailService: GmailServiceProtocol {
                 ) { result, error in
                     if let error = error {
                         continuation.resume(throwing: error)
-                        return
-                    }
-                    do {
-                        if let user = GIDSignIn.sharedInstance.currentUser,
-                           let tokenData = user.accessToken.tokenString.data(using: .utf8) {
-                            try keychain.save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
-                        }
+                    } else {
                         continuation.resume()
-                    } catch {
-                        continuation.resume(throwing: error)
                     }
                 }
             }
@@ -77,8 +68,6 @@ final class GmailService: GmailServiceProtocol {
     /// Gmail 連携を解除する
     func disconnect() async throws {
         GIDSignIn.sharedInstance.signOut()
-        try keychainService.delete(for: KeychainKey.gmailAccessToken.rawValue)
-        try keychainService.delete(for: KeychainKey.gmailRefreshToken.rawValue)
     }
 
     /// 暗号化ファイルを送信する

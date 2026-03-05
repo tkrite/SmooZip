@@ -17,5 +17,15 @@
     <!-- ダウンロードフォルダへの書き込み（解凍先デフォルト） -->
     <key>com.apple.security.files.downloads.read-write</key>
     <true/>
+
+    <!-- Homebrew製 libarchive の読み込みを許可（異なる Team ID の dylib） -->
+    <key>com.apple.security.cs.disable-library-validation</key>
+    <true/>
+
+    <!-- GIDSignIn SDK が Keychain にトークンを保存するために必要 -->
+    <key>keychain-access-groups</key>
+    <array>
+        <string>$(AppIdentifierPrefix)com.tkrite.SecureZip</string>
+    </array>
 </dict>
 </plist>

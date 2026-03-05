@@ -4,17 +4,14 @@ import GoogleSignIn
 /// Gmail REST API クライアント
 ///
 /// MIME メッセージを Base64URL エンコードして Gmail API に送信する。
-/// アクセストークンは Keychain から取得し、401 時はトークンをリフレッシュして1回リトライする。
+/// アクセストークンは GIDSignIn SDK から直接取得し、401 時はトークンをリフレッシュして1回リトライする。
 final class GmailAPIClient {
 
     private let session: URLSession
-    private let keychainService: KeychainServiceProtocol
     static let sendEndpoint = URL(string: "https://gmail.googleapis.com/gmail/v1/users/me/messages/send")!
 
-    init(session: URLSession = .shared,
-         keychainService: KeychainServiceProtocol = KeychainService()) {
+    init(session: URLSession = .shared) {
         self.session = session
-        self.keychainService = keychainService
     }
 
     /// メールを送信する
@@ -30,9 +27,9 @@ final class GmailAPIClient {
         body: String,
         attachment: URL?
     ) async throws {
-        // Keychain からアクセストークンを取得
-        guard let tokenData = try? keychainService.load(for: KeychainKey.gmailAccessToken.rawValue),
-              let token = String(data: tokenData, encoding: .utf8), !token.isEmpty else {
+        // GIDSignIn SDK からアクセストークンを取得
+        guard let token = GIDSignIn.sharedInstance.currentUser?.accessToken.tokenString,
+              !token.isEmpty else {
             throw SecureZipError.gmailNotAuthenticated
         }
 
@@ -98,7 +95,6 @@ final class GmailAPIClient {
             )
         }
 
-        let keychain = keychainService
         return try await withCheckedThrowingContinuation { continuation in
             user.refreshTokensIfNeeded { updatedUser, error in
                 if let error = error {
@@ -111,9 +107,6 @@ final class GmailAPIClient {
                         message: "認証トークンの更新に失敗しました"
                     ))
                     return
-                }
-                if let tokenData = newToken.data(using: .utf8) {
-                    try? keychain.save(tokenData, for: KeychainKey.gmailAccessToken.rawValue)
                 }
                 continuation.resume(returning: newToken)
             }

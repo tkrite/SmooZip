@@ -21,14 +21,17 @@ final class SendViewModel: ObservableObject {
     // MARK: - Dependencies
 
     private let gmailService: GmailServiceProtocol
+    private let compressionService: CompressionServiceProtocol
     private let passwordService: PasswordServiceProtocol
     private let historyService: HistoryServiceProtocol
     private var sendTask: Task<Void, Error>?
 
     init(gmailService: GmailServiceProtocol = GmailService(),
+         compressionService: CompressionServiceProtocol = CompressionService(),
          passwordService: PasswordServiceProtocol = PasswordService(),
          historyService: HistoryServiceProtocol = HistoryService()) {
         self.gmailService = gmailService
+        self.compressionService = compressionService
         self.passwordService = passwordService
         self.historyService = historyService
     }
@@ -75,25 +78,39 @@ final class SendViewModel: ObservableObject {
             }
 
             // 送信実行：エラー・キャンセルいずれの場合も isSending を false にリセットする
+            let archiveName = file.deletingPathExtension().lastPathComponent + ".zip"
+            let archiveURL = FileManager.default.temporaryDirectory.appendingPathComponent(archiveName)
+            defer { try? FileManager.default.removeItem(at: archiveURL) }
+
             do {
+                // 送信前に ZIP 圧縮（パスワードがあれば AES-256 暗号化）
+                try await compressionService.compress(
+                    sources: [file],
+                    destination: archiveURL,
+                    format: .zip,
+                    password: password.isEmpty ? nil : password,
+                    progress: { _ in }
+                )
+                try Task.checkCancellation()
+
                 try await gmailService.sendWithSeparatePassword(
-                    file: file,
+                    file: archiveURL,
                     password: password,
                     recipient: recipientEmail,
                     subject: subject.isEmpty ? "ファイルを送付します" : subject,
                     body: body,
-                    separatePassword: isSeparatePasswordEnabled
+                    separatePassword: isSeparatePasswordEnabled && !password.isEmpty
                 )
                 await MainActor.run {
                     isSending = false
                     isCompleted = true
                 }
                 // 送信成功後に履歴を保存（失敗しても送信完了扱いとする）
-                let fileSize = (try? file.resourceValues(forKeys: [.fileSizeKey]).fileSize).flatMap { Int64($0) } ?? 0
+                let fileSize = (try? archiveURL.resourceValues(forKeys: [.fileSizeKey]).fileSize).flatMap { Int64($0) } ?? 0
                 let historyItem = HistoryItem(
                     id: UUID(),
                     recipientEmail: recipientEmail,
-                    fileName: file.lastPathComponent,
+                    fileName: archiveURL.lastPathComponent,
                     originalFileNames: [file.lastPathComponent],
                     fileSize: fileSize,
                     format: .zip,

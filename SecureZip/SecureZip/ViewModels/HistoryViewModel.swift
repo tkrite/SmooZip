@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class HistoryViewModel: ObservableObject {
 
     @Published var items: [HistoryItem] = []

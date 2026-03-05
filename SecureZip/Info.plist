@@ -19,7 +19,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GIDClientID</key>
-	<string>YOUR_CLIENT_ID.apps.googleusercontent.com</string>
+	<string>360716390900-aphbucbpovv8hb64vh287ujh69ness50.apps.googleusercontent.com</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>Google Sign-In</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.YOUR_CLIENT_ID</string>
+				<string>com.googleusercontent.apps.360716390900-aphbucbpovv8hb64vh287ujh69ness50</string>
 			</array>
 		</dict>
 	</array>

@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import GoogleSignIn
 
+@MainActor
 final class SettingsViewModel: ObservableObject {
 
     // MARK: - UserDefaults Keys
