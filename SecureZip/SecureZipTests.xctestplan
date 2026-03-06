@@ -13,7 +13,6 @@
   },
   "testTargets" : [
     {
-      "enabled" : true,
       "target" : {
         "containerPath" : "container:SecureZip.xcodeproj",
         "identifier" : "D54255DD2F593C6C00D1887D",

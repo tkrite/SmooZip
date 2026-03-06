@@ -162,6 +162,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = D54252C62F557B0B00D1887D;
 			minimizedProjectReferenceProxies = 1;
@@ -354,13 +355,12 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/SecureZip/Infrastructure/Headers";
 				INFOPLIST_FILE = Info.plist;
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libarchive/lib;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				"OTHER_LDFLAGS[arch=*]" = "-larchive";
+				OTHER_LDFLAGS = "/opt/homebrew/opt/libarchive/lib/libarchive.a /opt/homebrew/opt/xz/lib/liblzma.a /opt/homebrew/opt/zstd/lib/libzstd.a /opt/homebrew/opt/lz4/lib/liblz4.a /opt/homebrew/opt/libb2/lib/libb2.a -lbz2 -lz -liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -385,13 +385,12 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = NO;
-				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/SecureZip/Infrastructure/Headers";
 				INFOPLIST_FILE = Info.plist;
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libarchive/lib;
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				"OTHER_LDFLAGS[arch=*]" = "-larchive";
+				OTHER_LDFLAGS = "/opt/homebrew/opt/libarchive/lib/libarchive.a /opt/homebrew/opt/xz/lib/liblzma.a /opt/homebrew/opt/zstd/lib/libzstd.a /opt/homebrew/opt/lz4/lib/liblz4.a /opt/homebrew/opt/libb2/lib/libb2.a -lbz2 -lz -liconv";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -410,7 +409,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3529GL9CD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/SecureZip/Infrastructure/Headers";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZipTests;
@@ -432,7 +431,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3529GL9CD6;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libarchive/include;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/SecureZip/Infrastructure/Headers";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tkrite.SecureZipTests;
