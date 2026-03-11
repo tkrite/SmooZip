@@ -66,8 +66,14 @@ final class CompressViewModel: ObservableObject {
         errorMessage = nil
 
         let filesToProcess = selectedFiles
-        filesToProcess.forEach { _ = $0.startAccessingSecurityScopedResource() }
+        var accessFailed = false
+        filesToProcess.forEach { if !$0.startAccessingSecurityScopedResource() { accessFailed = true } }
         defer { filesToProcess.forEach { $0.stopAccessingSecurityScopedResource() } }
+        if accessFailed {
+            errorMessage = "ファイルへのアクセス権を取得できませんでした"
+            isCompressing = false
+            return
+        }
 
         do {
             let pw = isEncryptionEnabled ? password : nil

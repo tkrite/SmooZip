@@ -27,6 +27,10 @@ final class CoreDataStack {
     /// テスト時はインメモリストアを使用する（`inMemory()` ファクトリ経由でのみ変更すること）
     private(set) var useInMemoryStore: Bool = false
 
+    /// ストア読み込み失敗でインメモリにフォールバックしている場合 true
+    /// 呼び出し元でこのフラグを確認し、必要に応じてユーザーへ通知すること
+    private(set) var isUsingFallbackStore: Bool = false
+
     private init() {}
 
     lazy var persistentContainer: NSPersistentContainer = {
@@ -45,7 +49,9 @@ final class CoreDataStack {
 
         if let error = loadError {
             // ストア読み込み失敗時はインメモリコンテナへフォールバック
+            // isUsingFallbackStore を確認してUIでユーザーへ通知すること
             print("⚠️ Core Data 読み込み失敗、インメモリで代替します: \(error)")
+            isUsingFallbackStore = true
             let fallback = makeInMemoryContainer()
             fallback.viewContext.automaticallyMergesChangesFromParent = true
             return fallback

@@ -104,8 +104,8 @@ final class GmailService: GmailServiceProtocol {
             attachment: file
         )
 
-        // 2. パスワード別送が有効な場合のみ、数秒後にパスワード通知メールを送信
-        guard separatePassword else { return }
+        // 2. パスワード別送が有効かつパスワードが空でない場合のみ、数秒後にパスワード通知メールを送信
+        guard separatePassword && !password.isEmpty else { return }
         try await Task.sleep(nanoseconds: Self.passwordEmailDelayNanoseconds)
         let passwordSubject = "【パスワード通知】\(subject)"
         let passwordBody = "先ほど送付したファイルのパスワードは以下の通りです。\n\nパスワード: \(password)\n\n※このメールは自動送信されています。"

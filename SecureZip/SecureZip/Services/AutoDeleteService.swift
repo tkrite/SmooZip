@@ -16,7 +16,15 @@ final class AutoDeleteService {
     /// 自動削除スケジューラーを開始する（アプリ起動時に呼び出す）
     func startScheduler() {
         // アプリ起動時に即時チェック
-        Task { try? await deleteIfEnabled() }
+        Task {
+            do {
+                try await deleteIfEnabled()
+            } catch {
+                #if DEBUG
+                print("⚠️ AutoDeleteService: 起動時チェック失敗: \(error)")
+                #endif
+            }
+        }
 
         // 1 時間ごとに期限切れ履歴を削除（構造化並行性でメインスレッド非依存）
         schedulerTask = Task {

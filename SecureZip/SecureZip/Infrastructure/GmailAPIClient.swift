@@ -7,11 +7,13 @@ import GoogleSignIn
 /// アクセストークンは GIDSignIn SDK から直接取得し、401 時はトークンをリフレッシュして1回リトライする。
 final class GmailAPIClient {
 
+    static let gmailSendEndpoint = URL(string: "https://gmail.googleapis.com/gmail/v1/users/me/messages/send")!
+
     private let session: URLSession
     private let sendEndpoint: URL
 
     init(session: URLSession = .shared,
-         sendEndpoint: URL = URL(string: "https://gmail.googleapis.com/gmail/v1/users/me/messages/send")!) {
+         sendEndpoint: URL = GmailAPIClient.gmailSendEndpoint) {
         self.session = session
         self.sendEndpoint = sendEndpoint
     }

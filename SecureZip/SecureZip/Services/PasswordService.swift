@@ -54,8 +54,10 @@ final class PasswordService: PasswordServiceProtocol {
             var byte: UInt8 = 0
             let status = SecRandomCopyBytes(kSecRandomDefault, 1, &byte)
             guard status == errSecSuccess else {
-                // SecRandomCopyBytes の失敗は通常発生しないが、フォールバックとして randomElement を使用
-                result.append(charsetArray.randomElement()!)
+                // SecRandomCopyBytes は通常失敗しない。失敗時は SystemRandomNumberGenerator（暗号学的安全）を使用
+                if let fallbackChar = charsetArray.randomElement() {
+                    result.append(fallbackChar)
+                }
                 continue
             }
             // acceptLimit 未満のバイトのみ採用（均等分布を保証）

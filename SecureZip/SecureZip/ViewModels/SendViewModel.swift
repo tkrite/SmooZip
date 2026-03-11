@@ -83,13 +83,15 @@ final class SendViewModel: ObservableObject {
             }
 
             // 送信実行：エラー・キャンセルいずれの場合も isSending を false にリセットする
-            let archiveName = file.deletingPathExtension().lastPathComponent + ".zip"
+            let archiveName = file.deletingPathExtension().lastPathComponent + "_\(UUID().uuidString).zip"
             let archiveURL = FileManager.default.temporaryDirectory.appendingPathComponent(archiveName)
             defer { try? FileManager.default.removeItem(at: archiveURL) }
 
             do {
-                _ = file.startAccessingSecurityScopedResource()
-            defer { file.stopAccessingSecurityScopedResource() }
+                guard file.startAccessingSecurityScopedResource() else {
+                    throw SecureZipError.fileAccessDenied(url: file)
+                }
+                defer { file.stopAccessingSecurityScopedResource() }
 
             // 送信前に ZIP 圧縮（パスワードがあれば AES-256 暗号化）
                 try await compressionService.compress(

@@ -14,10 +14,10 @@ enum PasswordStrength: Int, Comparable {
     /// ユーザーに表示するラベル
     var displayName: String {
         switch self {
-        case .weak:   return "弱い"
-        case .fair:   return "普通"
-        case .good:   return "良い"
-        case .strong: return "強い"
+        case .weak:   return NSLocalizedString("弱い", comment: "Password strength: weak")
+        case .fair:   return NSLocalizedString("普通", comment: "Password strength: fair")
+        case .good:   return NSLocalizedString("良い", comment: "Password strength: good")
+        case .strong: return NSLocalizedString("強い", comment: "Password strength: strong")
         }
     }
 

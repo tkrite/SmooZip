@@ -325,8 +325,11 @@ final class LibArchiveWrapper {
                 if n < 0 {
                     throw SecureZipError.decompressionFailed(underlying: makeArchiveError(archive))
                 }
-                buf.withUnsafeBytes { ptr in
-                    _ = archive_write_data(disk, ptr.baseAddress, n)
+                let written = buf.withUnsafeBytes { ptr in
+                    archive_write_data(disk, ptr.baseAddress, size_t(n))
+                }
+                if written < 0 {
+                    throw SecureZipError.decompressionFailed(underlying: makeArchiveError(disk))
                 }
             }
 

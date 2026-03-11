@@ -11,11 +11,11 @@ enum SendStatus: String, CaseIterable {
     /// ユーザーに表示するラベル
     var displayName: String {
         switch self {
-        case .created:   return "作成済み"
-        case .sending:   return "送信中"
-        case .sent:      return "送信済み"
-        case .cancelled: return "キャンセル"
-        case .failed:    return "失敗"
+        case .created:   return NSLocalizedString("作成済み", comment: "Send status: created")
+        case .sending:   return NSLocalizedString("送信中", comment: "Send status: sending")
+        case .sent:      return NSLocalizedString("送信済み", comment: "Send status: sent")
+        case .cancelled: return NSLocalizedString("キャンセル済み", comment: "Send status: cancelled")
+        case .failed:    return NSLocalizedString("失敗", comment: "Send status: failed")
         }
     }
 

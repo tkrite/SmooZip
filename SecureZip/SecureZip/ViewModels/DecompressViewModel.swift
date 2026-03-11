@@ -24,7 +24,11 @@ final class DecompressViewModel: ObservableObject {
         errorMessage = nil
         isCompleted = false
 
-        _ = source.startAccessingSecurityScopedResource()
+        guard source.startAccessingSecurityScopedResource() else {
+            errorMessage = "ファイルへのアクセス権を取得できませんでした"
+            isDecompressing = false
+            return
+        }
         defer { source.stopAccessingSecurityScopedResource() }
 
         do {

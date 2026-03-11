@@ -24,6 +24,9 @@
     ul { padding-left: 1.4em; }
     li { margin-bottom: 4px; }
     a { color: #0071e3; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    th, td { border: 1px solid #d2d2d7; padding: 8px 12px; text-align: left; font-size: 0.95em; }
+    th { background: #f5f5f7; }
   </style>
   <script>
     function showLang(lang) {
@@ -43,137 +46,289 @@
     <a href="#" onclick="showLang('en'); return false;">English</a>
   </div>
 
+  <!-- ============================================================ -->
   <!-- 日本語 -->
+  <!-- ============================================================ -->
   <div class="ja">
     <h1>プライバシーポリシー</h1>
-    <p class="updated">最終更新日：2026年3月5日</p>
+    <p class="updated">最終更新日：2026年3月11日</p>
 
     <section>
-      <p>SecureZip（以下「本アプリ」）は、個人開発者 murakami-akane が提供する macOS 向けアプリケーションです。本ポリシーは、本アプリがどのような情報を取り扱うかを説明します。</p>
+      <p>SecureZip（以下「本アプリ」）は、個人開発者 murakami-akane（以下「開発者」）が提供する macOS 向けファイル圧縮・暗号化アプリケーションです。本ポリシーは、本アプリがどのような個人情報を取り扱うか、その法的根拠、およびユーザーの皆様の権利について説明します。</p>
+      <p>本アプリをご利用いただくことで、本ポリシーへの同意とみなします。同意いただけない場合は、本アプリのご利用をお控えください。</p>
     </section>
 
     <section>
-      <h2>1. 収集する情報</h2>
-      <p>本アプリが収集・保存する情報は以下のみです：</p>
+      <h2>1. データ管理者</h2>
+      <p>本アプリにおける個人データの管理者（データコントローラー）は以下の通りです。</p>
       <ul>
-        <li><strong>Gmail メールアドレス</strong>：Gmail 連携時に取得します。お使いのデバイスの Keychain にのみ保存され、外部サーバーには送信されません。</li>
-        <li><strong>送付履歴</strong>：送付先メールアドレス・ファイル名・送信日時をデバイス内の Core Data（ローカルデータベース）に保存します。設定した日数が経過すると自動削除されます。</li>
+        <li><strong>氏名：</strong>murakami-akane</li>
+        <li><strong>連絡先：</strong><a href="mailto:info@tkrite.com">info@tkrite.com</a></li>
       </ul>
+      <p>個人情報の取り扱いに関するご質問・ご要望は上記メールアドレスまでお問い合わせください。</p>
     </section>
 
     <section>
-      <h2>2. 収集しない情報</h2>
-      <p>本アプリは以下の情報を一切収集しません：</p>
+      <h2>2. 収集する個人情報と利用目的・法的根拠</h2>
+      <p>本アプリが収集・保存する個人情報は以下のみです。</p>
+
+      <table>
+        <tr>
+          <th>情報の種類</th>
+          <th>保存場所</th>
+          <th>利用目的</th>
+          <th>法的根拠（GDPR）</th>
+          <th>保持期間</th>
+        </tr>
+        <tr>
+          <td>Gmail 認証トークン</td>
+          <td>デバイス内 Keychain（暗号化）</td>
+          <td>Gmail 経由のメール送信機能を提供するため</td>
+          <td>契約の履行（Art. 6(1)(b)）</td>
+          <td>「Gmail 連携解除」操作または本アプリのアンインストール時まで</td>
+        </tr>
+        <tr>
+          <td>送付先メールアドレス・ファイル名・送信日時</td>
+          <td>デバイス内ローカルデータベース（Core Data）</td>
+          <td>送付履歴の表示および自動削除機能のため</td>
+          <td>正当な利益（Art. 6(1)(f)）／ユーザーの同意</td>
+          <td>ユーザーが設定した日数（デフォルト 30 日）経過後に自動削除</td>
+        </tr>
+      </table>
+
+      <p style="margin-top:12px;">上記のデータはすべてユーザーのデバイス上にのみ保存されます。開発者のサーバーやクラウドサービスにデータが転送されることはありません。</p>
+    </section>
+
+    <section>
+      <h2>3. Gmail API の利用とデータの送信</h2>
+      <p>本アプリは Gmail API を通じてメール送信を行います。メール送信時には、送付先メールアドレスおよび添付ファイルが Google のサーバーに送信されます。これは Gmail を利用したメール送信に不可欠な処理です。</p>
+      <ul>
+        <li>使用する OAuth 2.0 スコープは <code>gmail.send</code> のみです</li>
+        <li>メールの読み取り・削除・連絡先へのアクセスは行いません</li>
+        <li>認証トークンはデバイスの Keychain に保存され、開発者を含む第三者がアクセスすることはできません</li>
+        <li>Google によるデータの取り扱いについては <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a> をご参照ください</li>
+      </ul>
+      <p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a> に準拠しています。Google から取得したデータを、Google の利用規約で許可された範囲を超えて使用・保存・共有することはありません。</p>
+    </section>
+
+    <section>
+      <h2>4. 収集しない情報</h2>
+      <p>本アプリは以下の情報を一切収集しません。</p>
       <ul>
         <li>アナリティクス・利用統計データ</li>
         <li>広告識別子</li>
         <li>位置情報</li>
-        <li>ファイルの内容</li>
+        <li>圧縮・解凍するファイルの内容</li>
         <li>クラッシュレポート（開発者への自動送信なし）</li>
       </ul>
     </section>
 
     <section>
-      <h2>3. Gmail API の利用</h2>
-      <p>本アプリは Gmail API を通じてメール送信を行います。使用する OAuth 2.0 スコープは <code>gmail.send</code> のみであり、メールの読み取り・削除・連絡先へのアクセスは行いません。認証トークンはデバイスの Keychain に保存され、開発者を含む第三者がアクセスすることはできません。</p>
-      <p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a> に準拠しています。</p>
+      <h2>5. 第三者への情報提供</h2>
+      <p>本アプリは、ユーザーの個人情報を第三者に<strong>販売しません</strong>。また、本ポリシーに定める場合（Gmail API によるメール送信）を除き、第三者に提供・共有することもありません。</p>
     </section>
 
     <section>
-      <h2>4. 第三者への情報提供</h2>
-      <p>本アプリは、ユーザーの情報を第三者に販売・提供・共有しません。</p>
-    </section>
-
-    <section>
-      <h2>5. データの保管場所</h2>
-      <p>すべてのデータはユーザーのデバイス上にのみ保存されます。開発者のサーバーやクラウドサービスにデータが送信されることはありません。</p>
-    </section>
-
-    <section>
-      <h2>6. データの削除</h2>
-      <p>アプリをアンインストールすることで、Core Data に保存されたすべての履歴データが削除されます。Keychain に保存された認証情報は、アプリ内の「設定 → Gmail 連携解除」から削除できます。</p>
-    </section>
-
-    <section>
-      <h2>7. お子様のプライバシー</h2>
-      <p>本アプリは 13 歳未満のお子様を対象としておらず、意図的にお子様の情報を収集することはありません。</p>
-    </section>
-
-    <section>
-      <h2>8. ポリシーの変更</h2>
-      <p>本ポリシーは必要に応じて更新されることがあります。変更がある場合は、このページの「最終更新日」を更新します。</p>
-    </section>
-
-    <section>
-      <h2>9. お問い合わせ</h2>
-      <p>本ポリシーに関するご質問は、App Store のサポートページよりお問い合わせください。</p>
-    </section>
-  </div>
-
-  <!-- English -->
-  <div class="en">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: March 5, 2026</p>
-
-    <section>
-      <p>SecureZip ("the App") is a macOS application developed by murakami-akane. This policy explains what information the App handles.</p>
-    </section>
-
-    <section>
-      <h2>1. Information We Collect</h2>
-      <p>The App collects and stores only the following information:</p>
+      <h2>6. セキュリティ</h2>
+      <p>本アプリは以下の技術的措置によりデータを保護しています。</p>
       <ul>
-        <li><strong>Gmail email address</strong>: Obtained when connecting to Gmail. Stored only in your device's Keychain and never transmitted to external servers.</li>
-        <li><strong>Send history</strong>: Recipient email address, file name, and send date/time are stored in Core Data (local database) on your device. This data is automatically deleted after the number of days you configure.</li>
+        <li><strong>AES-256 暗号化：</strong>ZIP ファイルを業界標準の AES-256 で暗号化します</li>
+        <li><strong>Keychain 保護：</strong>認証トークンは macOS Keychain に保存され、デバイスのロック解除時のみアクセス可能です</li>
+        <li><strong>App Sandbox：</strong>macOS の App Sandbox によりファイルアクセスが制限されています</li>
       </ul>
     </section>
 
     <section>
-      <h2>2. Information We Do Not Collect</h2>
+      <h2>7. データの削除</h2>
+      <ul>
+        <li><strong>送付履歴：</strong>設定した日数（デフォルト 30 日）経過後に自動削除されます。また、アプリ内の履歴画面から手動で削除することもできます。アプリをアンインストールすると、すべての履歴データが削除されます。</li>
+        <li><strong>Gmail 認証トークン：</strong>アプリ内の「設定 → Gmail 連携解除」から削除できます。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. ユーザーの権利</h2>
+      <p>お客様の居住地域に応じて、以下の権利が適用されます。</p>
+
+      <p><strong>▶ EU / EEA 居住者（GDPR）</strong></p>
+      <ul>
+        <li><strong>アクセス権：</strong>保有する個人データのコピーを請求できます</li>
+        <li><strong>訂正権：</strong>不正確なデータの修正を要求できます</li>
+        <li><strong>消去権（忘れられる権利）：</strong>特定の条件下でデータの削除を要求できます</li>
+        <li><strong>処理制限権：</strong>処理の一時停止を要求できます</li>
+        <li><strong>データポータビリティ権：</strong>機械読み取り可能な形式でデータを受け取ることができます</li>
+        <li><strong>異議申立権：</strong>正当な利益に基づく処理に異議を申し立てることができます</li>
+        <li><strong>監督機関への申立権：</strong>お住まいの国のデータ保護機関（DPA）に苦情を申し立てる権利があります（例：日本の個人情報保護委員会、ドイツの BfDI など）</li>
+      </ul>
+
+      <p><strong>▶ カリフォルニア州居住者（CCPA）</strong></p>
+      <ul>
+        <li><strong>情報開示請求権：</strong>収集された個人情報の種類・利用目的の開示を請求できます</li>
+        <li><strong>削除権：</strong>収集された個人情報の削除を要求できます</li>
+        <li><strong>販売オプトアウト権：</strong>本アプリは個人情報を販売しないため、このオプトアウトの実質的な行使は不要です</li>
+        <li><strong>差別禁止：</strong>上記権利の行使を理由に差別的な扱いを受けることはありません</li>
+      </ul>
+
+      <p>上記権利を行使される場合は、<a href="mailto:info@tkrite.com">info@tkrite.com</a> までご連絡ください。本アプリのデータはすべてデバイス上に保存されるため、多くの場合、アプリ内の機能（履歴削除・連携解除）から直接対応することが可能です。</p>
+    </section>
+
+    <section>
+      <h2>9. お子様のプライバシー（COPPA）</h2>
+      <p>本アプリは 13 歳未満のお子様を対象としておらず、意図的に 13 歳未満の方の個人情報を収集することはありません。13 歳未満のお子様が本アプリを使用していることが判明した場合、または保護者の方がそのようなデータの削除を希望される場合は、<a href="mailto:info@tkrite.com">info@tkrite.com</a> までご連絡ください。速やかに対応いたします。</p>
+    </section>
+
+    <section>
+      <h2>10. ポリシーの変更</h2>
+      <p>本ポリシーは必要に応じて更新されることがあります。重要な変更がある場合は、このページの「最終更新日」を更新します。定期的にご確認いただくことをお勧めします。本アプリは個人開発のため、メールによる変更通知は現時点では提供していません。</p>
+    </section>
+
+    <section>
+      <h2>11. お問い合わせ</h2>
+      <p>本ポリシーに関するご質問・データに関するご要望は以下までお問い合わせください。</p>
+      <p><a href="mailto:info@tkrite.com">info@tkrite.com</a></p>
+    </section>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- English -->
+  <!-- ============================================================ -->
+  <div class="en">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: March 11, 2026</p>
+
+    <section>
+      <p>SecureZip ("the App") is a macOS file compression and encryption application developed by murakami-akane ("the Developer"). This Privacy Policy explains what personal information the App handles, the legal basis for processing, and your rights as a user.</p>
+      <p>By using the App, you agree to this Privacy Policy. If you do not agree, please discontinue use of the App.</p>
+    </section>
+
+    <section>
+      <h2>1. Data Controller</h2>
+      <p>The data controller for personal data processed by the App is:</p>
+      <ul>
+        <li><strong>Name:</strong> murakami-akane</li>
+        <li><strong>Contact:</strong> <a href="mailto:info@tkrite.com">info@tkrite.com</a></li>
+      </ul>
+      <p>For any questions or requests regarding your personal data, please contact us at the address above.</p>
+    </section>
+
+    <section>
+      <h2>2. Information We Collect, How We Use It, and Legal Basis</h2>
+      <p>The App collects and stores only the following personal information:</p>
+
+      <table>
+        <tr>
+          <th>Data Type</th>
+          <th>Storage Location</th>
+          <th>Purpose</th>
+          <th>Legal Basis (GDPR)</th>
+          <th>Retention Period</th>
+        </tr>
+        <tr>
+          <td>Gmail authentication token</td>
+          <td>Device Keychain (encrypted)</td>
+          <td>To provide email sending functionality via Gmail</td>
+          <td>Performance of a contract (Art. 6(1)(b))</td>
+          <td>Until "Disconnect Gmail" or App uninstall</td>
+        </tr>
+        <tr>
+          <td>Recipient email address, file name, send date/time</td>
+          <td>Local database on device (Core Data)</td>
+          <td>To display send history and support auto-deletion</td>
+          <td>Legitimate interests (Art. 6(1)(f)) / User consent</td>
+          <td>Automatically deleted after the number of days set by the user (default: 30 days)</td>
+        </tr>
+      </table>
+
+      <p style="margin-top:12px;">All data is stored solely on the user's device. No data is transmitted to the Developer's servers or any cloud service operated by the Developer.</p>
+    </section>
+
+    <section>
+      <h2>3. Use of Gmail API and Data Transmission</h2>
+      <p>The App uses the Gmail API to send emails. When sending, the recipient's email address and the attached file are transmitted to Google's servers. This is essential to the email sending functionality.</p>
+      <ul>
+        <li>The only OAuth 2.0 scope used is <code>gmail.send</code></li>
+        <li>The App does not read, delete, or access your emails or contacts</li>
+        <li>Authentication tokens are stored in your device's Keychain and are not accessible to the Developer or any third party</li>
+        <li>For details on how Google handles this data, please refer to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+      </ul>
+      <p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>. Data obtained from Google APIs is not used, stored, or shared beyond what is permitted by Google's Terms of Service.</p>
+    </section>
+
+    <section>
+      <h2>4. Information We Do Not Collect</h2>
       <p>The App does not collect any of the following:</p>
       <ul>
         <li>Analytics or usage statistics</li>
         <li>Advertising identifiers</li>
         <li>Location data</li>
-        <li>File contents</li>
-        <li>Crash reports (no automatic reporting to the developer)</li>
+        <li>Contents of files being compressed or decompressed</li>
+        <li>Crash reports (no automatic reporting to the Developer)</li>
       </ul>
     </section>
 
     <section>
-      <h2>3. Use of Gmail API</h2>
-      <p>The App uses the Gmail API solely to send emails. The only OAuth 2.0 scope used is <code>gmail.send</code>. The App does not read, delete, or access your emails or contacts. Authentication tokens are stored in your device's Keychain and cannot be accessed by the developer or any third party.</p>
-      <p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>.</p>
+      <h2>5. Sharing of Information</h2>
+      <p>The App does <strong>not sell</strong> your personal information. We do not share or provide your personal information to any third party, except as necessary to transmit emails via the Gmail API as described in Section 3.</p>
     </section>
 
     <section>
-      <h2>4. Sharing of Information</h2>
-      <p>The App does not sell, provide, or share your information with any third party.</p>
+      <h2>6. Security</h2>
+      <p>The App uses the following technical measures to protect your data:</p>
+      <ul>
+        <li><strong>AES-256 Encryption:</strong> ZIP files are encrypted using industry-standard AES-256</li>
+        <li><strong>Keychain Protection:</strong> Authentication tokens are stored in the macOS Keychain, accessible only when the device is unlocked</li>
+        <li><strong>App Sandbox:</strong> File access is restricted by macOS App Sandbox</li>
+      </ul>
     </section>
 
     <section>
-      <h2>5. Data Storage</h2>
-      <p>All data is stored solely on your device. No data is transmitted to the developer's servers or any cloud service.</p>
+      <h2>7. Data Deletion</h2>
+      <ul>
+        <li><strong>Send History:</strong> Automatically deleted after the number of days you configure (default: 30 days). You can also delete records manually from the History screen within the App. Uninstalling the App removes all history data.</li>
+        <li><strong>Gmail Authentication Token:</strong> Can be removed via Settings → Disconnect Gmail within the App.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>6. Data Deletion</h2>
-      <p>Uninstalling the App will delete all history data stored in Core Data. Authentication credentials stored in Keychain can be removed via Settings → Disconnect Gmail within the App.</p>
+      <h2>8. Your Privacy Rights</h2>
+      <p>Depending on your region, the following rights may apply to you.</p>
+
+      <p><strong>▶ EU / EEA Residents (GDPR)</strong></p>
+      <ul>
+        <li><strong>Right of Access:</strong> You may request a copy of the personal data we hold about you</li>
+        <li><strong>Right to Rectification:</strong> You may request correction of inaccurate data</li>
+        <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> You may request deletion of your data under certain conditions</li>
+        <li><strong>Right to Restriction of Processing:</strong> You may request that processing be temporarily suspended</li>
+        <li><strong>Right to Data Portability:</strong> You may receive your data in a machine-readable format</li>
+        <li><strong>Right to Object:</strong> You may object to processing based on legitimate interests</li>
+        <li><strong>Right to Lodge a Complaint:</strong> You have the right to lodge a complaint with your local data protection authority (e.g., ICO in the UK, CNIL in France, BfDI in Germany)</li>
+      </ul>
+
+      <p><strong>▶ California Residents (CCPA)</strong></p>
+      <ul>
+        <li><strong>Right to Know:</strong> You may request disclosure of what personal information is collected and how it is used</li>
+        <li><strong>Right to Delete:</strong> You may request deletion of personal information we have collected</li>
+        <li><strong>Right to Opt-Out of Sale:</strong> We do not sell personal information, so there is no opt-out required in practice</li>
+        <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of these rights</li>
+      </ul>
+
+      <p>To exercise any of these rights, please contact us at <a href="mailto:info@tkrite.com">info@tkrite.com</a>. Since all App data is stored on your device, many requests can be fulfilled directly using in-app features (history deletion, disconnect Gmail).</p>
     </section>
 
     <section>
-      <h2>7. Children's Privacy</h2>
-      <p>The App is not directed at children under the age of 13, and we do not knowingly collect information from children.</p>
+      <h2>9. Children's Privacy (COPPA)</h2>
+      <p>The App is not directed at children under the age of 13, and we do not knowingly collect personal information from children under 13. If you believe a child under 13 has used the App or that such data has been collected, please contact us at <a href="mailto:info@tkrite.com">info@tkrite.com</a> and we will promptly delete any such information.</p>
     </section>
 
     <section>
-      <h2>8. Changes to This Policy</h2>
-      <p>This policy may be updated from time to time. When changes are made, the "Last updated" date on this page will be revised.</p>
+      <h2>10. Changes to This Policy</h2>
+      <p>This policy may be updated from time to time. When material changes are made, the "Last updated" date at the top of this page will be revised. We encourage you to review this policy periodically. As this is an individually developed app, email notification of changes is not currently provided.</p>
     </section>
 
     <section>
-      <h2>9. Contact</h2>
-      <p>For questions about this policy, please contact us via the support page on the App Store.</p>
+      <h2>11. Contact</h2>
+      <p>For questions about this policy or requests regarding your personal data, please contact:</p>
+      <p><a href="mailto:info@tkrite.com">info@tkrite.com</a></p>
     </section>
   </div>
 

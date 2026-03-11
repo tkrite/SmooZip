@@ -92,6 +92,19 @@
 "error.compressionFailed" = "Compression failed: %@";
 "error.decompressionFailed" = "Decompression failed: %@";
 
+/* Send Status */
+"作成済み" = "Created";
+"送信中" = "Sending";
+"送信済み" = "Sent";
+"キャンセル済み" = "Cancelled";
+"失敗" = "Failed";
+
+/* Password Strength */
+"弱い" = "Weak";
+"普通" = "Fair";
+"良い" = "Good";
+"強い" = "Strong";
+
 /* Password Generator */
 "生成設定" = "Generator Settings";
 "大文字 (A-Z)" = "Uppercase (A-Z)";
