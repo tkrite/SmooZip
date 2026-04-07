@@ -10,6 +10,7 @@ final class SendViewModel: ObservableObject {
     @Published var subject: String = ""
     @Published var body: String = ""
     @Published var selectedFile: URL?
+    @Published var archiveFileName: String = ""
     @Published var password: String = ""
     @Published var isSeparatePasswordEnabled: Bool = true
     @Published var cancelDelaySeconds: Int = 5
@@ -43,6 +44,12 @@ final class SendViewModel: ObservableObject {
     }
 
     var isGmailAuthenticated: Bool { gmailService.isAuthenticated }
+
+    /// ファイルを選択し、アーカイブファイル名のデフォルト値を設定する
+    func selectFile(_ url: URL) {
+        selectedFile = url
+        archiveFileName = url.deletingPathExtension().lastPathComponent
+    }
 
     // MARK: - Validation
 
@@ -94,9 +101,14 @@ final class SendViewModel: ObservableObject {
             }
 
             // 送信実行：エラー・キャンセルいずれの場合も isSending を false にリセットする
-            let archiveName = file.deletingPathExtension().lastPathComponent + "_\(UUID().uuidString).zip"
-            let archiveURL = FileManager.default.temporaryDirectory.appendingPathComponent(archiveName)
-            defer { try? FileManager.default.removeItem(at: archiveURL) }
+            // UUID をディレクトリ名に使い、ユーザー指定のファイル名を添付名として使用する
+            let finalName = archiveFileName.trimmingCharacters(in: .whitespaces).isEmpty
+                ? file.deletingPathExtension().lastPathComponent
+                : archiveFileName.trimmingCharacters(in: .whitespaces)
+            let tempDir = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
+            try? FileManager.default.createDirectory(at: tempDir, withIntermediateDirectories: true)
+            let archiveURL = tempDir.appendingPathComponent(finalName + ".zip")
+            defer { try? FileManager.default.removeItem(at: tempDir) }
 
             do {
                 guard file.startAccessingSecurityScopedResource() else {

@@ -114,6 +114,13 @@ final class LibArchiveWrapper {
         totalBytes: Int64,
         progress: @escaping @Sendable (Double) -> Void
     ) throws {
+        // libarchive は LC_CTYPE に基づいてファイル名エンコーディングを決定する。
+        // GUI 起動のアプリは LANG 環境変数が未設定のため setlocale(LC_ALL,"") が
+        // C ロケール（ASCII のみ）のままになり、日本語等の非 ASCII ファイル名で
+        // "Can't translate Pathname" エラーが発生する。
+        // UTF-8 を明示的に指定することで archive_read_disk_new() が UTF-8 で動作する。
+        setlocale(LC_CTYPE, "UTF-8")
+
         guard let archive = archive_write_new() else {
             throw SecureZipError.compressionFailed(underlying: makeArchiveError(nil))
         }
@@ -239,6 +246,7 @@ final class LibArchiveWrapper {
         password: String?,
         progress: @escaping @Sendable (Double) -> Void
     ) throws {
+        setlocale(LC_CTYPE, "UTF-8")
         // 一時ディレクトリに展開し、全エントリ成功後のみ destination に移動する（アトミック展開）
         // → 途中でエラーが発生しても destination に不完全なファイルが残らない
         let fm = FileManager.default
@@ -472,6 +480,7 @@ final class LibArchiveWrapper {
     /// libarchive でエントリを列挙し、展開先ディレクトリの外を指すパスが
     /// 含まれている場合はエラーをスローする。検証のみ行い展開はしない。
     private func validateTarPaths(source: URL, destination: URL) throws {
+        setlocale(LC_CTYPE, "UTF-8")
         guard let archive = archive_read_new() else {
             throw SecureZipError.decompressionFailed(underlying: Self.makeArchiveError(nil))
         }

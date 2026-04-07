@@ -40,32 +40,46 @@ struct SendView: View {
                             }
 
                             GroupBox("添付ファイル") {
-                                HStack {
-                                    if let file = vm.selectedFile {
-                                        VStack(alignment: .leading, spacing: 2) {
-                                            Text(file.lastPathComponent)
-                                                .lineLimit(1)
-                                                .truncationMode(.middle)
-                                            Text(file.fileSizeDescription)
-                                                .font(.caption)
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack {
+                                        if let file = vm.selectedFile {
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text(file.lastPathComponent)
+                                                    .lineLimit(1)
+                                                    .truncationMode(.middle)
+                                                Text(file.fileSizeDescription)
+                                                    .font(.caption)
+                                                    .foregroundStyle(.secondary)
+                                            }
+                                        } else {
+                                            Text("ファイルが選択されていません")
                                                 .foregroundStyle(.secondary)
                                         }
-                                    } else {
-                                        Text("ファイルが選択されていません")
-                                            .foregroundStyle(.secondary)
+                                        Spacer()
+                                        Button("選択...") { openFilePicker() }
                                     }
-                                    Spacer()
-                                    Button("選択...") { openFilePicker() }
+                                    if vm.selectedFile != nil {
+                                        HStack(spacing: 4) {
+                                            TextField("送信ファイル名", text: $vm.archiveFileName)
+                                            Text(".zip")
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
                                 }
                                 .padding(4)
                             }
 
                             GroupBox("パスワード") {
-                                HStack {
-                                    SecureField("暗号化パスワード", text: $vm.password)
-                                    Button("生成") {
-                                        vm.generatePassword()
+                                VStack(alignment: .leading, spacing: 6) {
+                                    HStack {
+                                        SecureField("暗号化パスワード", text: $vm.password)
+                                        Button("生成") {
+                                            vm.generatePassword()
+                                        }
                                     }
+                                    Text("windows.zip.hint")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
                                 .padding(4)
                             }
@@ -134,8 +148,8 @@ struct SendView: View {
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.title = NSLocalizedString("送付するファイルを選択", comment: "")
-        if panel.runModal() == .OK {
-            vm.selectedFile = panel.url
+        if panel.runModal() == .OK, let url = panel.url {
+            vm.selectFile(url)
         }
     }
 }

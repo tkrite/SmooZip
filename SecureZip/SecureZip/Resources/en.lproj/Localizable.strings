@@ -33,9 +33,12 @@
 "password.email.warning.title" = "Password Will Be Sent by Email";
 "password.email.warning.message" = "The password will be sent to the recipient in a separate email. Sending via email may expose the password on mail servers. Do you want to continue?";
 
+/* Windows ZIP Compatibility Hint */
+"windows.zip.hint" = "※ Windows users need 7-Zip or WinRAR to open password-protected ZIP files";
+
 /* Password Notification Email */
 "password.email.subject" = "[Password Notice] %@";
-"password.email.body" = "The password for the file you just received is as follows.\n\nPassword: %@\n\nThis email was sent automatically.";
+"password.email.body" = "The password for the file you just received is as follows.\n\nPassword: %@\n\n※ This file is AES-256 encrypted.\n  Windows users need 7-Zip (free) or WinRAR to open it.\n  7-Zip: https://www.7-zip.org/\n  WinRAR: https://www.rarlab.com/\n\nThis email was sent automatically.";
 
 /* Send */
 "送付するファイルを選択" = "Choose File to Send";
@@ -47,6 +50,7 @@
 "添付ファイル" = "Attachment";
 "ファイルが選択されていません" = "No file selected";
 "選択..." = "Select...";
+"送信ファイル名" = "Archive filename";
 "暗号化パスワード" = "Encryption Password";
 "生成" = "Generate";
 "件名・本文" = "Subject & Body";
