@@ -37,7 +37,6 @@ struct PasswordGeneratorSheet: View {
                 HStack {
                     Text(generatedPassword.isEmpty ? "---" : generatedPassword)
                         .font(.system(.body, design: .monospaced))
-                        .textSelection(.enabled)
                     Spacer()
                     Button("コピー") {
                         NSPasteboard.general.clearContents()

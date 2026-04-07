@@ -6,7 +6,7 @@
 - **ブランチ**: `master`
 - **関連Issue**: -
 - **プロジェクトフェーズ**: Phase 5（App Store 申請準備）
-- **コミット状態**: 未コミット（ワーキングツリーに変更あり、9ファイル）
+- **コミット状態**: コミット済み（`8e08a01`, `beca733` の2件）
 
 ## 本日の開発目標
 ### 計画タスク
@@ -139,11 +139,29 @@ TestFlight・App Store 申請に必要な残タスクを整理し、担当者へ
 | HistoryView バッチ削除 | 未確認 | 複数選択削除後に UI 状態が正しく更新されることの確認 |
 | パスワードメール件名・本文（英語） | 未確認 | 英語ロケールでメール内容が英語になることの確認 |
 
-### ユニットテスト
-- [ ] テストケース作成（validateTarPaths 単体テストは未追加 -- 要対応）
-- [ ] deleteItems(ids:) のテスト追加（HistoryViewModelTests）
-- [ ] テスト実行
+### ユニットテスト（validateTarPaths）
+- [x] テストケース作成（LibArchiveWrapperTests.swift に 8件追加）
+- [x] テスト実行（8/8 PASS）
+- [ ] deleteItems(ids:) のテスト追加（HistoryViewModelTests）- 未対応
 - [ ] カバレッジ: 未計測
+
+#### validateTarPaths テスト結果詳細
+
+| テストケース | 検証内容 | 結果 |
+|------------|---------|------|
+| testDecompress_normalPaths_doesNotThrowDecompressionFailed | 正常パスは解凍失敗エラーにならないことを確認 | PASS |
+| testDecompress_pathTraversal_singleDotDot_sanitizedByValidateTarPaths | `..` を含む単純パストラバーサルが sanitize されることを確認 | PASS |
+| testDecompress_absolutePath_sanitizedByValidateTarPaths | 絶対パス（`/etc/passwd` 等）が sanitize されることを確認 | PASS |
+| testDecompress_nestedPathTraversal_doubleDotDot_sanitizedByValidateTarPaths | `../../` を含む二重パストラバーサルが sanitize されることを確認 | PASS |
+| testDecompress_pathTraversalInSubdir_throwsDecompressionFailed | サブディレクトリ経由のパストラバーサルがエラーになることを確認 | PASS |
+| testDecompress_deeplyNestedNormalPath_doesNotThrowDecompressionFailed | 深くネストした正常パスが通過することを確認 | PASS |
+| testDecompress_pathTraversal_doesNotWriteFilesOutsideDestination | パストラバーサル時に destination 外へファイルが書き出されないことを確認 | PASS |
+| testMakeTarGz_producesNonEmptyFile / testMakeTarGz_startsWithGzipMagicBytes | Pure Swift 製 TAR.GZ ヘルパーが有効なファイルを生成することを確認 | PASS |
+
+#### テスト実装上の補足
+- `validateTarPaths` は `private` のため、`decompress` 経由の間接テストを採用（アクセス修飾子変更不要）
+- App Sandbox 制約により外部プロセス（`tar` コマンド等）使用不可のため、TAR.GZ バイナリを Pure Swift で生成するヘルパーをテスト内に実装
+- `..` はエラーとして即座にリジェクトするのではなく sanitize して無力化する設計であることをテストで確認済み
 
 ## 発生した問題と解決
 
@@ -197,7 +215,8 @@ archive_read_support_filter_none(archive)
 - 完了: プライバシーポリシー英語切り替えバグ修正
 - 完了: コードレビュー指摘修正 5件（C-1, C-3, C-4, H-3, H-5）
 - 完了: App Store 申請残タスク整理・担当者への引き継ぎ
-- 注意: 全変更が未コミット状態。コミット・ビルド確認は担当者に委任
+- 完了: コミット実行（`8e08a01`, `beca733`）
+- 完了: validateTarPaths 単体テスト 8件追加・全件 PASS 確認
 
 ### 全体進捗
 ```
@@ -223,6 +242,13 @@ App Store 提出: [#####-----]  50%（担当者作業待ち）
 7. docs(privacy): Organization 移管に伴う開発者名・最終更新日更新・英語切り替えバグ修正
 ```
 
+### 実行済みコミット
+
+| # | ハッシュ | 変更ファイル数 | 追加/削除 | 内容 |
+|---|---------|-------------|----------|------|
+| 1 | `8e08a01` | 10ファイル | +396 / -11 | プライバシーポリシー組織移管・セキュリティ修正5件・開発ログ追加 |
+| 2 | `beca733` | 2ファイル | +520 / -0 | validateTarPaths 単体テスト8件追加（8/8 PASS）・テスト結果レポート追加 |
+
 ## 次の予定
 
 ### 優先タスク（担当者作業）
@@ -245,10 +271,9 @@ App Store 提出: [#####-----]  50%（担当者作業待ち）
   - 空パス
   - シンボリックリンクを含むパス（libarchive レベルでの追加検討）
 - **validateTarPaths の sanitize ロジック**: 現実装では `..` を除去してから destination 配下チェックを行うため、`../../malicious` が `malicious` として destination 配下に展開される。攻撃自体は防げるが、sanitize 前の生パスでも destination 外を指す場合はリジェクトする方が厳密（要検討）
-- **未コミット状態**: 全変更がワーキングツリーにのみ存在。担当者がビルド確認後、速やかにコミットすること
+- **コミット済み**: `8e08a01`（メイン変更）・`beca733`（テスト追加）の2件でコミット完了
 
 ### 必要なサポート
-- 担当者によるビルド確認・コミット実行
 - App Store Connect / Google Cloud Console のコンソール操作
 
 ## メモ・備考
@@ -280,11 +305,13 @@ App Store 提出: [#####-----]  50%（担当者作業待ち）
 | 変更ファイル数 | 9ファイル（開発ログ除く） |
 | コードレビュー修正件数 | 5件（C-1, C-3, C-4, H-3, H-5） |
 | ローカライズ追加キー数 | 5件（en/ja 各: password.email.subject, password.email.body, coredata.fallback.title, coredata.fallback.message, coredata.fallback.ok） |
-| コミット状態 | 未コミット |
+| コミット状態 | 完了（`8e08a01`, `beca733`） |
+| テスト追加数 | 8件（validateTarPaths 間接テスト） |
+| テスト結果 | 8/8 PASS |
 
 ## タグ
 `#development` `#appstore-prep` `#code-review` `#swift` `#macos` `#security` `#l10n` `#privacy` `#zip-slip` `#coredata` `#github-pages` `#2026-03-12`
 
 ---
 *作成: 2026-03-12 JST*
-*最終更新: 2026-03-12 JST（リードデベロッパーレビュー済）*
+*最終更新: 2026-03-12 JST（コミット実行・テスト結果追記）*

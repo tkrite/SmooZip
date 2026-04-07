@@ -4,6 +4,7 @@ import SwiftUI
 struct CancelOverlayView: View {
 
     let countdown: Int
+    let totalSeconds: Int
     let isSending: Bool
     let onCancel: () -> Void
 
@@ -24,10 +25,11 @@ struct CancelOverlayView: View {
                             .stroke(Color.secondary.opacity(0.3), lineWidth: 6)
                             .frame(width: 80, height: 80)
                         Circle()
-                            .trim(from: 0, to: 1)
+                            .trim(from: 0, to: totalSeconds > 0 ? Double(countdown) / Double(totalSeconds) : 1)
                             .stroke(Color.accentColor, lineWidth: 6)
                             .frame(width: 80, height: 80)
                             .rotationEffect(.degrees(-90))
+                            .animation(.linear(duration: 1), value: countdown)
                         Text("\(countdown)")
                             .font(.system(size: 32, weight: .bold, design: .rounded))
                     }
@@ -51,5 +53,5 @@ struct CancelOverlayView: View {
 }
 
 #Preview {
-    CancelOverlayView(countdown: 4, isSending: false) {}
+    CancelOverlayView(countdown: 4, totalSeconds: 5, isSending: false) {}
 }

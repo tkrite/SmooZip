@@ -50,7 +50,7 @@ struct DropZoneView: View {
         for provider in providers {
             provider.loadItem(forTypeIdentifier: UTType.fileURL.identifier) { item, error in
                 if let error {
-                    DispatchQueue.main.async { errorMessage = "ファイルの読み込みに失敗しました: \(error.localizedDescription)" }
+                    DispatchQueue.main.async { errorMessage = String(format: NSLocalizedString("error.dropFailed", comment: ""), error.localizedDescription) }
                     return
                 }
                 guard let data = item as? Data,

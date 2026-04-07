@@ -25,7 +25,7 @@ final class DecompressViewModel: ObservableObject {
         isCompleted = false
 
         guard source.startAccessingSecurityScopedResource() else {
-            errorMessage = "ファイルへのアクセス権を取得できませんでした"
+            errorMessage = NSLocalizedString("error.fileAccess.generic", comment: "")
             isDecompressing = false
             return
         }
@@ -40,6 +40,7 @@ final class DecompressViewModel: ObservableObject {
                 Task { @MainActor [weak self] in self?.progress = p }
             }
             isCompleted = true
+            password = ""
         } catch {
             errorMessage = error.localizedDescription
         }

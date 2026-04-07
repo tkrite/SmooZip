@@ -10,7 +10,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         autoDeleteService.startScheduler()
         // 既存の Google サインイン状態を復元
-        GIDSignIn.sharedInstance.restorePreviousSignIn { user, _ in
+        GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
+            if let error {
+                NSLog("[AppDelegate] restorePreviousSignIn failed: \(error.localizedDescription)")
+            }
             NotificationCenter.default.post(
                 name: .gmailAuthStateChanged,
                 object: user != nil

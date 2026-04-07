@@ -18,6 +18,7 @@ final class SendViewModel: ObservableObject {
     @Published var isCountingDown: Bool = false
     @Published var errorMessage: String?
     @Published var isCompleted: Bool = false
+    @Published var showPasswordEmailWarning: Bool = false
 
     // MARK: - Dependencies
 
@@ -53,6 +54,16 @@ final class SendViewModel: ObservableObject {
     }
 
     // MARK: - Actions
+
+    /// 送信ボタン押下 → パスワード別送が有効な場合は確認ダイアログを表示し、それ以外はそのまま開始
+    func requestSend() {
+        guard canSend else { return }
+        if isSeparatePasswordEnabled && !password.isEmpty {
+            showPasswordEmailWarning = true
+        } else {
+            startSending()
+        }
+    }
 
     /// 送信ボタン押下 → カウントダウン開始
     func startSending() {
@@ -107,7 +118,7 @@ final class SendViewModel: ObservableObject {
                     file: archiveURL,
                     password: password,
                     recipient: recipientEmail,
-                    subject: subject.isEmpty ? "ファイルを送付します" : subject,
+                    subject: subject.isEmpty ? NSLocalizedString("send.default.subject", comment: "") : subject,
                     body: body,
                     separatePassword: isSeparatePasswordEnabled && !password.isEmpty
                 )
@@ -136,12 +147,14 @@ final class SendViewModel: ObservableObject {
                 await MainActor.run {
                     isSending = false
                     isCountingDown = false
+                    isCompleted = false
                     countdown = 0
                     password = ""
                 }
             } catch {
                 await MainActor.run {
                     isSending = false
+                    isCompleted = false
                     errorMessage = error.localizedDescription
                 }
             }

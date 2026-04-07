@@ -43,13 +43,15 @@ final class HistoryViewModel: ObservableObject {
     }
 
     func deleteItems(ids: [UUID]) async {
+        var failedIds = Set<UUID>()
         for id in ids {
             do {
                 try await historyService.delete(id: id)
             } catch {
                 errorMessage = error.localizedDescription
+                failedIds.insert(id)
             }
         }
-        items.removeAll { ids.contains($0.id) }
+        items.removeAll { ids.contains($0.id) && !failedIds.contains($0.id) }
     }
 }

@@ -88,7 +88,7 @@ struct SendView: View {
 
                             HStack {
                                 Spacer()
-                                Button("送信する") { vm.startSending() }
+                                Button("送信する") { vm.requestSend() }
                                     .buttonStyle(.borderedProminent)
                                     .disabled(!vm.canSend)
                             }
@@ -111,11 +111,18 @@ struct SendView: View {
             if vm.isCountingDown || vm.isSending {
                 CancelOverlayView(
                     countdown: vm.countdown,
+                    totalSeconds: vm.cancelDelaySeconds,
                     isSending: vm.isSending
                 ) {
                     vm.cancelSending()
                 }
             }
+        }
+        .alert("password.email.warning.title", isPresented: $vm.showPasswordEmailWarning) {
+            Button("送信する", role: .destructive) { vm.startSending() }
+            Button("キャンセル", role: .cancel) { }
+        } message: {
+            Text("password.email.warning.message")
         }
     }
 
@@ -126,7 +133,7 @@ struct SendView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
-        panel.title = "送付するファイルを選択"
+        panel.title = NSLocalizedString("送付するファイルを選択", comment: "")
         if panel.runModal() == .OK {
             vm.selectedFile = panel.url
         }

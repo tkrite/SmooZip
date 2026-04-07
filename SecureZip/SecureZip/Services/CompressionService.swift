@@ -48,7 +48,6 @@ final class CompressionService: CompressionServiceProtocol {
         if let _ = password, !format.supportsEncryption {
             throw SecureZipError.encryptionNotSupported(format: format)
         }
-        // TODO: libarchive を使用したストリーミング圧縮処理を実装
         try await archiveWrapper.compress(
             sources: sources,
             destination: destination,
@@ -65,7 +64,6 @@ final class CompressionService: CompressionServiceProtocol {
         password: String?,
         progress: @escaping @Sendable (Double) -> Void
     ) async throws {
-        // TODO: libarchive を使用した解凍処理を実装
         try await archiveWrapper.decompress(
             source: source,
             destination: destination,

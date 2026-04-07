@@ -60,7 +60,6 @@ final class GmailAPIClient {
     // MARK: - Private Helpers
 
     /// リクエストを送信し HTTP ステータスコードを返す
-    @discardableResult
     private func performRequest(rawMessage: String, token: String) async throws -> Int {
         var request = URLRequest(url: sendEndpoint)
         request.httpMethod = "POST"
@@ -145,10 +144,22 @@ final class GmailAPIClient {
             mime += "\r\n\r\n"
 
             // --- 添付ファイルパート ---
-            let attachmentData = try await Task.detached(priority: .userInitiated) {
-                try Data(contentsOf: attachment)
+            // FileHandle でチャンク読み込みし、ファイル全体とエンコード結果を
+            // 同時にメモリに保持しないようにする（ピーク使用量を ~58MB → ~33MB に削減）
+            let encodedAttachment: String = try await Task.detached(priority: .userInitiated) {
+                let chunkSize = 3 * 16384  // 48KB、3の倍数でBase64境界がずれない
+                guard let fileHandle = FileHandle(forReadingAtPath: attachment.path) else {
+                    throw SecureZipError.fileAccessDenied(url: attachment)
+                }
+                defer { try? fileHandle.close() }
+                var chunks: [String] = []
+                while true {
+                    let chunk = fileHandle.readData(ofLength: chunkSize)
+                    if chunk.isEmpty { break }
+                    chunks.append(chunk.base64EncodedString(options: [.lineLength76Characters, .endLineWithCarriageReturn]))
+                }
+                return chunks.joined()
             }.value
-            let encodedAttachment = attachmentData.base64EncodedString(options: [.lineLength76Characters, .endLineWithCarriageReturn])
             let encodedFilename = attachment.lastPathComponent.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? attachment.lastPathComponent
 
             mime += "--\(boundary)\r\n"

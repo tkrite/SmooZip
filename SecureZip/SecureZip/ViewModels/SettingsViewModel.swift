@@ -79,33 +79,43 @@ final class SettingsViewModel: ObservableObject {
 
         // 変更を UserDefaults に自動保存
         $passwordLength
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.passwordLength) }
             .store(in: &cancellables)
         $includeUppercase
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.includeUppercase) }
             .store(in: &cancellables)
         $includeLowercase
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.includeLowercase) }
             .store(in: &cancellables)
         $includeNumbers
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.includeNumbers) }
             .store(in: &cancellables)
         $includeSymbols
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.includeSymbols) }
             .store(in: &cancellables)
         $isAutoDeleteEnabled
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.isAutoDeleteEnabled) }
             .store(in: &cancellables)
         $autoDeleteDays
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.autoDeleteDays) }
             .store(in: &cancellables)
         $cancelDelaySeconds
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.cancelDelaySeconds) }
             .store(in: &cancellables)
         $separatePasswordByDefault
+            .dropFirst()
             .sink { ud.set($0, forKey: UDKey.separatePasswordByDefault) }
             .store(in: &cancellables)
         $postCompressionAction
+            .dropFirst()
             .sink { ud.set($0.rawValue, forKey: UDKey.postCompressionAction) }
             .store(in: &cancellables)
     }

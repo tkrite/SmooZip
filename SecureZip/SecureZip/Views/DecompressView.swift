@@ -77,7 +77,7 @@ struct DecompressView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
-        panel.title = "解凍するファイルを選択"
+        panel.title = NSLocalizedString("解凍するファイルを選択", comment: "")
         panel.allowedContentTypes = []  // 全形式を許可
         if panel.runModal() == .OK {
             vm.selectedFile = panel.url
@@ -91,7 +91,7 @@ struct DecompressView: View {
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.canCreateDirectories = true
-        panel.title = "解凍先フォルダを選択"
+        panel.title = NSLocalizedString("解凍先フォルダを選択", comment: "")
         if panel.runModal() == .OK, let url = panel.url {
             Task { await vm.decompress(destination: url) }
         }

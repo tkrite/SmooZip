@@ -76,6 +76,7 @@ final class LibArchiveWrapper {
             try await runProcess(
                 executable: "/usr/bin/ditto",
                 arguments: ["-xk", source.path, destination.path],
+                isDecompression: true,
                 progress: progress
             )
         }
@@ -119,6 +120,10 @@ final class LibArchiveWrapper {
         defer { archive_write_free(archive) }
 
         archive_write_set_format_zip(archive)
+
+        // UTF-8 フラグ（EFS フラグ）を設定し Windows でファイル名が文字化けしないようにする
+        // ZIP 6.3.0 の Language Encoding Flag により Windows エクスプローラーが UTF-8 として解釈する
+        archive_write_set_options(archive, "zip:hdrcharset=UTF-8")
 
         if let pw = password, !pw.isEmpty {
             archive_write_set_passphrase(archive, pw)
@@ -171,10 +176,13 @@ final class LibArchiveWrapper {
                 archive_read_disk_descend(disk)
 
                 // アーカイブ内パスを相対パスに変換
+                // macOS は HFS+/APFS の NFD 正規化ファイル名を返すため NFC に変換して
+                // Windows 互換性を確保する（NFD のまま格納すると Windows で文字化けする）
                 if let srcPathPtr = archive_entry_sourcepath(entry) {
                     let srcURL = URL(fileURLWithPath: String(cString: srcPathPtr))
                     let rel = relativePath(of: srcURL, from: baseURL)
-                    archive_entry_set_pathname(entry, rel)
+                    let nfcRel = rel.precomposedStringWithCanonicalMapping
+                    archive_entry_set_pathname(entry, nfcRel)
                 }
 
                 guard archive_write_header(archive, entry) == ARCHIVE_OK else {
@@ -298,7 +306,10 @@ final class LibArchiveWrapper {
                     .filter { $0 != ".." && $0 != "." && !$0.isEmpty }
                     .joined(separator: "/")
                 guard !sanitized.isEmpty else { continue }
-                let fullURL = destination.appendingPathComponent(sanitized).standardizedFileURL
+                // 他ツール（旧 Mac / 一部 Linux 等）が NFD で格納したファイル名を NFC に正規化する
+                // これにより解凍後のファイル名が一貫した NFC 形式になり、他アプリとの互換性が向上する
+                let nfcSanitized = sanitized.precomposedStringWithCanonicalMapping
+                let fullURL = destination.appendingPathComponent(nfcSanitized).standardizedFileURL
                 let destPath = destination.standardizedFileURL.path
                 guard fullURL.path.hasPrefix(destPath + "/") || fullURL.path == destPath else {
                     throw SecureZipError.decompressionFailed(
@@ -442,7 +453,7 @@ final class LibArchiveWrapper {
         } else {
             args = ["-c\(compressionFlag)f", destination.path]
         }
-        args += sources.map { $0.path }
+        args += ["--"] + sources.map { $0.path }
         // tar はバイト単位の進捗取得が困難なため時間ベースでシミュレートする
         let progressTask = Task {
             for step in [0.2, 0.35, 0.5, 0.65, 0.8, 0.9] as [Double] {
@@ -452,7 +463,7 @@ final class LibArchiveWrapper {
             }
         }
         defer { progressTask.cancel() }
-        try await runProcess(executable: "/usr/bin/tar", arguments: args, progress: { _ in })
+        try await runProcess(executable: "/usr/bin/tar", arguments: args, isDecompression: false, progress: { _ in })
         progress(1.0)
     }
 
@@ -515,7 +526,7 @@ final class LibArchiveWrapper {
         // ZIP Slip 対策：実行前にアーカイブエントリのパスを検証
         try validateTarPaths(source: source, destination: destination)
         progress(0.1)
-        let args = flags + [source.path, "-C", destination.path]
+        let args = flags + ["--", source.path, "-C", destination.path]
         let progressTask = Task {
             for step in [0.2, 0.35, 0.5, 0.65, 0.8, 0.9] as [Double] {
                 try? await Task.sleep(nanoseconds: 500_000_000)
@@ -524,7 +535,7 @@ final class LibArchiveWrapper {
             }
         }
         defer { progressTask.cancel() }
-        try await runProcess(executable: "/usr/bin/tar", arguments: args, progress: { _ in })
+        try await runProcess(executable: "/usr/bin/tar", arguments: args, isDecompression: true, progress: { _ in })
         progress(1.0)
     }
 
@@ -534,10 +545,15 @@ final class LibArchiveWrapper {
         executable: String,
         arguments: [String],
         stdinData: Data? = nil,
+        isDecompression: Bool = false,
         progress: @escaping @Sendable (Double) -> Void
     ) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             DispatchQueue.global(qos: .userInitiated).async {
+                let makeError: (Error) -> SecureZipError = isDecompression
+                    ? { .decompressionFailed(underlying: $0) }
+                    : { .compressionFailed(underlying: $0) }
+
                 let process = Process()
                 process.executableURL = URL(fileURLWithPath: executable)
                 process.arguments = arguments
@@ -575,10 +591,10 @@ final class LibArchiveWrapper {
                             code: Int(process.terminationStatus),
                             userInfo: [NSLocalizedDescriptionKey: errorMessage]
                         )
-                        continuation.resume(throwing: SecureZipError.compressionFailed(underlying: error))
+                        continuation.resume(throwing: makeError(error))
                     }
                 } catch {
-                    continuation.resume(throwing: SecureZipError.compressionFailed(underlying: error))
+                    continuation.resume(throwing: makeError(error))
                 }
             }
         }

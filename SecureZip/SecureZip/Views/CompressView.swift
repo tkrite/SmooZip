@@ -119,7 +119,7 @@ struct CompressView: View {
         let panel = NSSavePanel()
         panel.nameFieldStringValue = "archive.\(vm.format.fileExtension)"
         panel.canCreateDirectories = true
-        panel.title = "圧縮ファイルの保存先を選択"
+        panel.title = NSLocalizedString("圧縮ファイルの保存先を選択", comment: "")
         if panel.runModal() == .OK, let url = panel.url {
             Task { await vm.compress(destination: url) }
         }

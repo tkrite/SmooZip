@@ -70,7 +70,7 @@ final class CompressViewModel: ObservableObject {
         filesToProcess.forEach { if !$0.startAccessingSecurityScopedResource() { accessFailed = true } }
         defer { filesToProcess.forEach { $0.stopAccessingSecurityScopedResource() } }
         if accessFailed {
-            errorMessage = "ファイルへのアクセス権を取得できませんでした"
+            errorMessage = NSLocalizedString("error.fileAccess.generic", comment: "")
             isCompressing = false
             return
         }
