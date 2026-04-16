@@ -25,7 +25,7 @@ app:
   play_store_url: "https://play.google.com/store/apps/details?id=com.example.app"
   
   # サポート情報
-  support_email: "support@example.com"
+  support_email: "info@tkrite.com"
   support_youtube_channel: "https://www.youtube.com/@tkriteinc.7441"
   support_videos:
     - title: "基本的な使い方"
@@ -53,28 +53,25 @@ app:
 
 # --- 開発者情報 ---
 developer:
-  name: "Tkrite.inc"
+  name: "Tkrite inc."
   url: "https://www.tkrite.com/"
   email: "info@tkrite.com"
 
 # --- プライバシーポリシー設定 ---
 privacy:
-  effective_date: "2026-04-15"
+  effective_date: "2026-04-07"
   data_collection:
-    - type: "利用状況データ"
-      description: "アプリの改善のため、匿名化された利用状況データを収集します。"
+    - type: "Gmail 認証トークン"
+      description: "Gmail 経由のメール送信機能を提供するため、OAuth 2.0 トークンをデバイス内 Keychain（暗号化）に保存します。"
       required: true
-    - type: "クラッシュレポート"
-      description: "アプリの安定性向上のため、クラッシュレポートを収集します。"
+    - type: "送付先メールアドレス・ファイル名・送信日時"
+      description: "送付履歴の表示および自動削除機能のため、デバイス内ローカルデータベース（Core Data）に保存します。ユーザーが設定した日数（デフォルト 30 日）経過後に自動削除されます。"
       required: true
-    # - type: "広告ID"
-    #   description: "広告配信の最適化に使用します。"
-    #   required: false
-  third_party_services: []
-    # - name: "Google Analytics"
-    #   url: "https://policies.google.com/privacy"
-    # - name: "Firebase"
-    #   url: "https://firebase.google.com/support/privacy"
+  third_party_services:
+    - name: "Google Privacy Policy"
+      url: "https://policies.google.com/privacy"
+    - name: "Google API Services User Data Policy"
+      url: "https://developers.google.com/terms/api-services-user-data-policy"
 
 # --- Jekyll 設定 ---
 # GitHub Pages 対応テーマ (カスタムレイアウトで上書き)
