@@ -1,0 +1,46 @@
+---
+layout: default
+body_class: home
+---
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    {% if site.app.icon %}
+    <img src="{{ site.app.icon | relative_url }}" alt="{{ site.app.name }}" class="hero-icon">
+    {% endif %}
+    <h1>{{ site.app.name }}</h1>
+    <p class="hero-tagline">{{ site.app.tagline }}</p>
+    <p class="hero-description">{{ site.app.description }}</p>
+    <div class="store-badges">
+      {% if site.app.app_store_url and site.app.app_store_url != "https://apps.apple.com/app/idXXXXXXXXX" %}
+      <a href="{{ site.app.app_store_url }}" target="_blank" rel="noopener" class="store-badge store-badge-apple">
+         App Store
+      </a>
+      {% endif %}
+      {% if site.app.play_store_url and site.app.play_store_url != "https://play.google.com/store/apps/details?id=com.example.app" %}
+      <a href="{{ site.app.play_store_url }}" target="_blank" rel="noopener" class="store-badge store-badge-google">
+        ▶ Google Play
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+{% if site.app.features %}
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">特徴</h2>
+    <div class="features-grid">
+      {% for feature in site.app.features %}
+      <div class="feature-card">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
