@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="page-content">
+  <div class="container">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.last_updated %}
+    <p class="page-meta">最終更新日: {{ page.last_updated }}</p>
+    {% endif %}
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+</article>

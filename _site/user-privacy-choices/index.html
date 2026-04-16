@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ユーザープライバシー選択 | Secure Zip</title>
+  <meta name="description" content="プライバシーに関する設定と選択肢についてご確認いただけます。">
+  
+  <!-- OGP -->
+  <meta property="og:title" content="ユーザープライバシー選択">
+  <meta property="og:description" content="プライバシーに関する設定と選択肢についてご確認いただけます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/securezip/user-privacy-choices/">
+  <meta property="og:image" content="http://localhost:4000/securezip/assets/images/app-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/securezip/assets/images/app-icon.png">
+  <link rel="apple-touch-icon" href="/securezip/assets/images/app-icon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/securezip/assets/css/style.css">
+</head>
+<body class="">
+  <header class="site-header">
+  <div class="container header-inner">
+    <a href="/securezip/" class="site-logo">
+      
+      <img src="/securezip/assets/images/app-icon.png" alt="Secure Zip" class="logo-icon" width="36" height="36">
+      
+      <span class="logo-text">Secure Zip</span>
+    </a>
+    <nav class="site-nav">
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="/securezip/">ホーム</a></li>
+        <li><a href="/securezip/support/">サポート</a></li>
+        <li><a href="/securezip/privacy-policy/">プライバシーポリシー</a></li>
+        <li><a href="/securezip/terms/">利用規約</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+  if (toggle && navList) {
+    toggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('open');
+    });
+  }
+});
+</script>
+
+
+  <main>
+    <article class="page-content">
+  <div class="container">
+    <h1 class="page-title">ユーザープライバシー選択</h1>
+    
+    <p class="page-meta">最終更新日: 2026年4月15日</p>
+    
+    <div class="prose">
+      <p>Secure Zip では、ユーザーのプライバシーを尊重し、データの取り扱いについて透明性を確保しています。以下に、ユーザーが選択・管理できるプライバシー設定についてご説明します。</p>
+
+<h2 id="データ収集のオプトアウト">データ収集のオプトアウト</h2>
+
+<!-- 必要に応じて以下のセクションを有効化 -->
+
+<!--
+## トラッキングの拒否
+
+本アプリはiOSの App Tracking Transparency（ATT）フレームワークに対応しています。初回起動時に表示されるダイアログで「Appにトラッキングしないように要求」を選択することで、トラッキングを拒否できます。
+
+後から変更する場合は、端末の **設定 > プライバシーとセキュリティ > トラッキング** から設定できます。
+
+## パーソナライズ広告の無効化
+
+パーソナライズ広告を無効にするには、以下の手順で設定してください。
+
+### iOS
+設定 > プライバシーとセキュリティ > Apple広告 > 「パーソナライズされた広告」をオフ
+
+### Android
+設定 > Google > 広告 > 「広告のパーソナライズをオプトアウトする」をオン
+-->
+
+<h2 id="データの削除">データの削除</h2>
+
+<p>ユーザーデータの削除を希望される場合は、以下の方法で対応いたします。</p>
+
+<ul>
+  <li><strong>アプリ内のデータ</strong>: アプリを端末からアンインストールすることで、端末上のデータは削除されます。</li>
+  <li><strong>サーバー上のデータ</strong>: サーバーにデータを保管している場合、以下のメールアドレスまで削除リクエストをお送りください。</li>
+</ul>
+
+<h2 id="お問い合わせ">お問い合わせ</h2>
+
+<p>プライバシーに関するご質問やご要望は、以下までご連絡ください。</p>
+
+<ul>
+  <li>メール: <a href="mailto:support@example.com">support@example.com</a></li>
+</ul>
+
+<p>詳細なデータ取り扱いについては、<a href="/securezip/privacy-policy/">プライバシーポリシー</a>もご参照ください。</p>
+
+    </div>
+  </div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- アプリ情報 -->
+      <div class="footer-section">
+        <h3>Secure Zip</h3>
+        <p class="footer-description">暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。</p>
+        <div class="store-badges-footer">
+          
+          
+        </div>
+      </div>
+
+      <!-- サイトマップ -->
+      <div class="footer-section">
+        <h3>サイトマップ</h3>
+        <ul class="footer-links">
+          <li><a href="/securezip/">ホーム</a></li>
+          <li><a href="/securezip/support/">サポート</a></li>
+          <li><a href="/securezip/privacy-policy/">プライバシーポリシー</a></li>
+          <li><a href="/securezip/terms/">利用規約</a></li>
+          <li><a href="/securezip/user-privacy-choices/">ユーザープライバシー選択</a></li>
+        </ul>
+      </div>
+
+      <!-- お問い合わせ -->
+      <div class="footer-section">
+        <h3>お問い合わせ</h3>
+        <ul class="footer-links">
+          
+          <li><a href="mailto:support@example.com">support@example.com</a></li>
+          
+          
+          <li><a href="https://www.tkrite.com/" target="_blank" rel="noopener">開発者サイト</a></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tkrite.inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

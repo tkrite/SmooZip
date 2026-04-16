@@ -1,0 +1,48 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- アプリ情報 -->
+      <div class="footer-section">
+        <h3>{{ site.app.name }}</h3>
+        <p class="footer-description">{{ site.description }}</p>
+        <div class="store-badges-footer">
+          {% if site.app.app_store_url and site.app.app_store_url != "https://apps.apple.com/app/idXXXXXXXXX" %}
+          <a href="{{ site.app.app_store_url }}" target="_blank" rel="noopener" class="store-badge-link">App Store</a>
+          {% endif %}
+          {% if site.app.play_store_url and site.app.play_store_url != "https://play.google.com/store/apps/details?id=com.example.app" %}
+          <a href="{{ site.app.play_store_url }}" target="_blank" rel="noopener" class="store-badge-link">Google Play</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- サイトマップ -->
+      <div class="footer-section">
+        <h3>サイトマップ</h3>
+        <ul class="footer-links">
+          <li><a href="{{ '/' | relative_url }}">ホーム</a></li>
+          <li><a href="{{ '/support/' | relative_url }}">サポート</a></li>
+          <li><a href="{{ '/privacy-policy/' | relative_url }}">プライバシーポリシー</a></li>
+          <li><a href="{{ '/terms/' | relative_url }}">利用規約</a></li>
+          <li><a href="{{ '/user-privacy-choices/' | relative_url }}">ユーザープライバシー選択</a></li>
+        </ul>
+      </div>
+
+      <!-- お問い合わせ -->
+      <div class="footer-section">
+        <h3>お問い合わせ</h3>
+        <ul class="footer-links">
+          {% if site.app.support_email %}
+          <li><a href="mailto:{{ site.app.support_email }}">{{ site.app.support_email }}</a></li>
+          {% endif %}
+          {% if site.developer.url and site.developer.url != "https://example.com" %}
+          <li><a href="{{ site.developer.url }}" target="_blank" rel="noopener">開発者サイト</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: "%Y" }} {{ site.developer.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

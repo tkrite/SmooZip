@@ -1,0 +1,34 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      {% if site.app.icon %}
+      <img src="{{ site.app.icon | relative_url }}" alt="{{ site.app.name }}" class="logo-icon" width="36" height="36">
+      {% endif %}
+      <span class="logo-text">{{ site.app.name }}</span>
+    </a>
+    <nav class="site-nav">
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>ホーム</a></li>
+        <li><a href="{{ '/support/' | relative_url }}"{% if page.url == '/support/' %} class="active"{% endif %}>サポート</a></li>
+        <li><a href="{{ '/privacy-policy/' | relative_url }}"{% if page.url == '/privacy-policy/' %} class="active"{% endif %}>プライバシーポリシー</a></li>
+        <li><a href="{{ '/terms/' | relative_url }}"{% if page.url == '/terms/' %} class="active"{% endif %}>利用規約</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+  if (toggle && navList) {
+    toggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('open');
+    });
+  }
+});
+</script>

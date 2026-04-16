@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Zip</title>
+  <meta name="description" content="暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。">
+  
+  <!-- OGP -->
+  <meta property="og:title" content="Secure Zip">
+  <meta property="og:description" content="暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://localhost:4000/securezip/">
+  <meta property="og:image" content="http://localhost:4000/securezip/assets/images/app-icon.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/securezip/assets/images/app-icon.png">
+  <link rel="apple-touch-icon" href="/securezip/assets/images/app-icon.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/securezip/assets/css/style.css">
+</head>
+<body class="home">
+  <header class="site-header">
+  <div class="container header-inner">
+    <a href="/securezip/" class="site-logo">
+      
+      <img src="/securezip/assets/images/app-icon.png" alt="Secure Zip" class="logo-icon" width="36" height="36">
+      
+      <span class="logo-text">Secure Zip</span>
+    </a>
+    <nav class="site-nav">
+      <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-list">
+        <li><a href="/securezip/" class="active">ホーム</a></li>
+        <li><a href="/securezip/support/">サポート</a></li>
+        <li><a href="/securezip/privacy-policy/">プライバシーポリシー</a></li>
+        <li><a href="/securezip/terms/">利用規約</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.nav-toggle');
+  const navList = document.querySelector('.nav-list');
+  if (toggle && navList) {
+    toggle.addEventListener('click', function() {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !expanded);
+      navList.classList.toggle('open');
+    });
+  }
+});
+</script>
+
+
+  <main>
+    <!-- Hero -->
+<section class="hero">
+  <div class="container">
+    
+    <img src="/securezip/assets/images/app-icon.png" alt="Secure Zip" class="hero-icon">
+    
+    <h1>Secure Zip</h1>
+    <p class="hero-tagline">ターミナル不要。ビジネスファイルを、安全に、かんたんに送る。</p>
+    <p class="hero-description">契約書・設計図・財務データなど、大切なファイルを安全に送りたい方へ。SecureZip for Mac は、AES-256暗号化・パスワード自動生成・Gmail送付をアプリ内で一気通貫で完結させる、Mac専用のセキュアファイル送付アプリです。ターミナル操作は一切不要です。</p>
+    <div class="store-badges">
+      
+      
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">特徴</h2>
+    <div class="features-grid">
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>AES-256暗号化圧縮</h3>
+        <p>業務レベルのAES-256暗号化でZIPファイルを保護。強力なパスワードを自動生成し、Keychainで安全に管理します。</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📪️</div>
+        <h3>Gmailでそのまま送付</h3>
+        <p>Gmail連携により、圧縮したファイルをアプリを離れることなく送信。ファイル本体とパスワードを自動で別メール送付するため、誤送信リスクを低減します。</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>送信キャンセル機能</h3>
+        <p>送信ボタンを押した後でも、設定した秒数以内であればキャンセルが可能。うっかりミスを防ぐ、ひと呼吸おける仕組みを搭載しています。</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- アプリ情報 -->
+      <div class="footer-section">
+        <h3>Secure Zip</h3>
+        <p class="footer-description">暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。</p>
+        <div class="store-badges-footer">
+          
+          
+        </div>
+      </div>
+
+      <!-- サイトマップ -->
+      <div class="footer-section">
+        <h3>サイトマップ</h3>
+        <ul class="footer-links">
+          <li><a href="/securezip/">ホーム</a></li>
+          <li><a href="/securezip/support/">サポート</a></li>
+          <li><a href="/securezip/privacy-policy/">プライバシーポリシー</a></li>
+          <li><a href="/securezip/terms/">利用規約</a></li>
+          <li><a href="/securezip/user-privacy-choices/">ユーザープライバシー選択</a></li>
+        </ul>
+      </div>
+
+      <!-- お問い合わせ -->
+      <div class="footer-section">
+        <h3>お問い合わせ</h3>
+        <ul class="footer-links">
+          
+          <li><a href="mailto:support@example.com">support@example.com</a></li>
+          
+          
+          <li><a href="https://www.tkrite.com/" target="_blank" rel="noopener">開発者サイト</a></li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tkrite.inc. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

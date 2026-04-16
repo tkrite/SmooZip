@@ -1,0 +1,90 @@
+# ============================================================
+# App Site Template - Jekyll Configuration
+# ============================================================
+# このファイルを編集してアプリごとにカスタマイズしてください
+# ============================================================
+
+# --- サイト基本情報 ---
+title: "Secure Zip"
+description: "暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。"
+url: "https://tkrite.github.io"  # GitHub Pages の URL
+baseurl: "/securezip"             # リポジトリ名（user.github.io の場合は空）
+lang: "ja"
+
+# --- アプリ情報 ---
+app:
+  name: "Secure Zip"
+  tagline: "ターミナル不要。ビジネスファイルを、安全に、かんたんに送る。"
+  description: "契約書・設計図・財務データなど、大切なファイルを安全に送りたい方へ。SecureZip for Mac は、AES-256暗号化・パスワード自動生成・Gmail送付をアプリ内で一気通貫で完結させる、Mac専用のセキュアファイル送付アプリです。ターミナル操作は一切不要です。"
+  version: "1.0.0"
+  icon: "/assets/images/app-icon.png"       # 512x512 推奨
+  screenshot: "/assets/images/screenshot.png" # アプリのスクリーンショット
+  
+  # ストアリンク
+  app_store_url: "https://apps.apple.com/app/idXXXXXXXXX"
+  play_store_url: "https://play.google.com/store/apps/details?id=com.example.app"
+  
+  # サポート情報
+  support_email: "support@example.com"
+  support_youtube_channel: "https://www.youtube.com/@tkriteinc.7441"
+  support_videos:
+    - title: "基本的な使い方"
+      youtube_id: "wqXKLnoFJ78"
+      description: "アプリの基本操作を動画で解説します。"
+    - title: "便利な機能の紹介"
+      youtube_id: "dGspxAT7oB8"
+      description: "知っておくと便利な機能をご紹介します。"
+    # - title: "よくある質問"
+    #   youtube_id: "xxxxxxxxxxx"
+    #   description: "よくいただくご質問にお答えします。"
+
+  # 機能一覧（トップページ用）
+  features:
+    - icon: "🔒"
+      title: "AES-256暗号化圧縮"
+      description: "業務レベルのAES-256暗号化でZIPファイルを保護。強力なパスワードを自動生成し、Keychainで安全に管理します。"
+    - icon: "📪️"
+      title: "Gmailでそのまま送付"
+      description: "Gmail連携により、圧縮したファイルをアプリを離れることなく送信。ファイル本体とパスワードを自動で別メール送付するため、誤送信リスクを低減します。"
+    - icon: "⏱️"
+      title: "送信キャンセル機能"
+      description: "送信ボタンを押した後でも、設定した秒数以内であればキャンセルが可能。うっかりミスを防ぐ、ひと呼吸おける仕組みを搭載しています。"
+
+
+# --- 開発者情報 ---
+developer:
+  name: "Tkrite.inc"
+  url: "https://www.tkrite.com/"
+  email: "info@tkrite.com"
+
+# --- プライバシーポリシー設定 ---
+privacy:
+  effective_date: "2026-04-15"
+  data_collection:
+    - type: "利用状況データ"
+      description: "アプリの改善のため、匿名化された利用状況データを収集します。"
+      required: true
+    - type: "クラッシュレポート"
+      description: "アプリの安定性向上のため、クラッシュレポートを収集します。"
+      required: true
+    # - type: "広告ID"
+    #   description: "広告配信の最適化に使用します。"
+    #   required: false
+  third_party_services: []
+    # - name: "Google Analytics"
+    #   url: "https://policies.google.com/privacy"
+    # - name: "Firebase"
+    #   url: "https://firebase.google.com/support/privacy"
+
+# --- Jekyll 設定 ---
+# GitHub Pages 対応テーマ (カスタムレイアウトで上書き)
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE

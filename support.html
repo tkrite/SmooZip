@@ -1,0 +1,75 @@
+---
+layout: default
+title: サポート
+description: "アプリのサポート情報・使い方ガイドをご確認いただけます。"
+permalink: /support/
+---
+
+<section class="support-hero">
+  <div class="container">
+    <h1>サポート</h1>
+    <p>{{ site.app.name }} の使い方やよくあるご質問をご確認いただけます。</p>
+  </div>
+</section>
+
+<div class="container">
+  <!-- 動画ガイド -->
+  {% if site.app.support_videos and site.app.support_videos.size > 0 %}
+  <section class="support-section">
+    <h2>📹 動画ガイド</h2>
+    <div class="video-grid">
+      {% for video in site.app.support_videos %}
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/{{ video.youtube_id }}"
+            title="{{ video.title }}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-info">
+          <h3>{{ video.title }}</h3>
+          {% if video.description %}
+          <p>{{ video.description }}</p>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% if site.app.support_youtube_channel and site.app.support_youtube_channel != "https://www.youtube.com/@your-channel" %}
+    <p class="text-center mt-lg">
+      <a href="{{ site.app.support_youtube_channel }}" target="_blank" rel="noopener">
+        ▶ YouTube チャンネルで他の動画も見る
+      </a>
+    </p>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  <!-- FAQ (必要に応じて追加) -->
+  <!--
+  <section class="support-section">
+    <h2>よくあるご質問</h2>
+    <div class="prose">
+      <h3>Q: アプリが起動しません</h3>
+      <p>A: 端末を再起動してから、再度お試しください。改善しない場合はアプリを再インストールしてください。</p>
+
+      <h3>Q: データのバックアップはできますか？</h3>
+      <p>A: はい、設定画面からバックアップを実行できます。</p>
+    </div>
+  </section>
+  -->
+
+  <!-- お問い合わせ -->
+  <section class="support-section">
+    <div class="contact-box">
+      <h3>お困りですか？</h3>
+      <p>上記で解決しない場合は、お気軽にお問い合わせください。</p>
+      <p class="mt-lg">
+        <a href="mailto:{{ site.app.support_email }}">📧 {{ site.app.support_email }}</a>
+      </p>
+    </div>
+  </section>
+</div>
