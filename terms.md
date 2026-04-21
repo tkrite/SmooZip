@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Terms of Service / 利用規約
-description: "SecureZip の利用規約 / Terms of Service for SecureZip"
+description: "Smoozip の利用規約 / Terms of Service for Smoozip"
 permalink: /terms/
 last_updated: "2026年4月7日"
 ---
@@ -30,7 +30,7 @@ window.addEventListener('load', function() {
 <h1>利用規約</h1>
 <p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">最終更新日：2026年4月7日</p>
 
-<p>本利用規約（以下「本規約」）は、Tkrite inc.（以下「開発者」）が提供する SecureZip（以下「本アプリ」）の利用条件を定めるものです。本アプリをダウンロードまたは使用することにより、ユーザーは本規約に同意したものとみなします。</p>
+<p>本利用規約（以下「本規約」）は、Tkrite inc.（以下「開発者」）が提供する Smoozip（以下「本アプリ」）の利用条件を定めるものです。本アプリをダウンロードまたは使用することにより、ユーザーは本規約に同意したものとみなします。</p>
 
 <h2>1. サービスの内容</h2>
 <p>本アプリは、macOS 向けのファイル圧縮・暗号化アプリケーションです。AES-256 暗号化による ZIP ファイルの作成、パスワード管理、および Gmail を通じたファイル送付機能を提供します。開発者は、事前の通知なく、サービスの内容を変更、追加、または廃止する場合があります。</p>
@@ -83,10 +83,10 @@ window.addEventListener('load', function() {
 <h1>Terms of Service</h1>
 <p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">Last updated: April 7, 2026</p>
 
-<p>These Terms of Service ("Terms") govern your use of SecureZip ("the App"), a macOS application developed by Tkrite inc. ("the Developer"). By downloading or using the App, you agree to these Terms. If you do not agree, please discontinue use of the App.</p>
+<p>These Terms of Service ("Terms") govern your use of Smoozip ("the App"), a macOS application developed by Tkrite inc. ("the Developer"). By downloading or using the App, you agree to these Terms. If you do not agree, please discontinue use of the App.</p>
 
 <h2>1. About the App</h2>
-<p>SecureZip is a macOS file compression and encryption application. It provides AES-256 encrypted ZIP file creation, password management, and file delivery via Gmail. The Developer reserves the right to modify, add, or discontinue features at any time without prior notice.</p>
+<p>Smoozip is a macOS file compression and encryption application. It provides AES-256 encrypted ZIP file creation, password management, and file delivery via Gmail. The Developer reserves the right to modify, add, or discontinue features at any time without prior notice.</p>
 
 <h2>2. Acceptable Use</h2>
 <p>You agree to use the App only in accordance with the following conditions:</p>

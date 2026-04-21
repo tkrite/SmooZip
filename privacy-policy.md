@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Privacy Policy / プライバシーポリシー
-description: "SecureZip のプライバシーポリシー / Privacy Policy for SecureZip"
+description: "SmooZip のプライバシーポリシー / Privacy Policy for SmooZip"
 permalink: /privacy-policy/
-last_updated: "2026年4月7日"
+last_updated: "2026年4月21日"
 ---
 
 <div class="lang-switch" style="margin-bottom:32px;">
@@ -28,9 +28,9 @@ window.addEventListener('load', function() {
 <div class="lang-ja">
 
 <h1>プライバシーポリシー</h1>
-<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">最終更新日：2026年4月7日</p>
+<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">最終更新日：2026年4月21日</p>
 
-<p>SecureZip（以下「本アプリ」）は、Tkrite inc.（以下「開発者」）が提供する macOS 向けファイル圧縮・暗号化アプリケーションです。本ポリシーは、本アプリがどのような個人情報を取り扱うか、その法的根拠、およびユーザーの皆様の権利について説明します。</p>
+<p>SmooZip（以下「本アプリ」）は、Tkrite inc.（以下「開発者」）が提供する macOS 向けファイル圧縮・暗号化アプリケーションです。本ポリシーは、本アプリがどのような個人情報を取り扱うか、その法的根拠、およびユーザーの皆様の権利について説明します。</p>
 <p>本アプリをご利用いただくことで、本ポリシーへの同意とみなします。同意いただけない場合は、本アプリのご利用をお控えください。</p>
 
 <h2>1. データ管理者</h2>
@@ -53,32 +53,77 @@ window.addEventListener('load', function() {
     <th style="border:1px solid #d2d2d7;padding:8px 12px;background:#f5f5f7;text-align:left;">保持期間</th>
   </tr>
   <tr>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Gmail 認証トークン</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Google 認証トークン（Gmail / Google Drive 共通）</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">デバイス内 Keychain（暗号化）</td>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Gmail 経由のメール送信機能を提供するため</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Gmail 経由のメール送信および Google Drive へのファイルアップロード機能を提供するため</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">契約の履行（Art. 6(1)(b)）</td>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">「Gmail 連携解除」操作または本アプリのアンインストール時まで</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">「Google アカウント連携解除」操作または本アプリのアンインストール時まで</td>
   </tr>
   <tr>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送付先メールアドレス・ファイル名・送信日時</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送付先メールアドレス・ファイル名・送信日時・送信ステータス</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">デバイス内ローカルデータベース（Core Data）</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">送付履歴の表示および自動削除機能のため</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">正当な利益（Art. 6(1)(f)）／ユーザーの同意</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">ユーザーが設定した日数（デフォルト 30 日）経過後に自動削除</td>
   </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送信先リスト（メールアドレス・氏名・会社名・電話番号・グループ名）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">デバイス内ローカルデータベース（Core Data）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送信先の再利用・一括送信・CSV インポート機能を提供するため</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">ユーザーの同意（Art. 6(1)(a)）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">ユーザーが手動で削除するまで／本アプリのアンインストール時まで</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送信テンプレート（件名・本文のひな形）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">デバイス内ローカルデータベース（Core Data）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">メール送信時のテンプレート再利用機能を提供するため</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">ユーザーの同意（Art. 6(1)(a)）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">ユーザーが手動で削除するまで／本アプリのアンインストール時まで</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">暗号化 ZIP のパスワード（送付履歴ごとに保管）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">デバイス内 Keychain（暗号化）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">送付後のパスワード別送・再確認機能を提供するため</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">契約の履行（Art. 6(1)(b)）</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">対応する送付履歴の削除時（自動削除日数経過時を含む）に自動削除</td>
+  </tr>
 </table>
 
-<p style="margin-top:12px;">上記のデータはすべてユーザーのデバイス上にのみ保存されます。開発者のサーバーやクラウドサービスにデータが転送されることはありません。</p>
+<p style="margin-top:12px;">上記のデータはすべてユーザーのデバイス上にのみ保存されます。開発者のサーバーやクラウドサービスにデータが転送されることはありません（Gmail / Google Drive API を通じた Google へのデータ送信については第3項をご参照ください）。</p>
 
-<h2>3. Gmail API の利用とデータの送信</h2>
-<p>本アプリは Gmail API を通じてメール送信を行います。メール送信時には、送付先メールアドレスおよび添付ファイルが Google のサーバーに送信されます。これは Gmail を利用したメール送信に不可欠な処理です。</p>
+<h2>3. Google API（Gmail / Google Drive）の利用とデータの送信</h2>
+<p>本アプリは Google の各種 API を通じて、メール送信および大容量ファイル共有の機能を提供します。いずれも機能を有効化した場合にのみ Google のサーバーと通信します。</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-1. Gmail API によるメール送信</h3>
+<p>Gmail 連携を有効にした場合、メール送信時に送付先メールアドレス・件名・本文・添付ファイルが Google のサーバーに送信されます。これは Gmail を利用したメール送信に不可欠な処理です。</p>
 <ul>
   <li>使用する OAuth 2.0 スコープは <code>gmail.send</code> のみです</li>
   <li>メールの読み取り・削除・連絡先へのアクセスは行いません</li>
-  <li>認証トークンはデバイスの Keychain に保存され、開発者を含む第三者がアクセスすることはできません</li>
-  <li>Google によるデータの取り扱いについては <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a> をご参照ください</li>
 </ul>
 <p><strong>パスワードの別送機能について：</strong>「パスワードを別メールで送付する」機能を有効にした場合、設定した暗号化パスワードがメール本文に含まれた状態で Gmail 経由で送信されます。このパスワードは Gmail のサーバーを経由するため、Google のメールインフラ上に保存されることをご理解ください。この機能を使用する際は、送信前に確認ダイアログが表示されます。セキュリティ上の懸念がある場合は、パスワードを別の手段（電話・SMS など）で相手に伝えることをお勧めします。</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-2. Google Drive API によるファイル共有</h3>
+<p>Google Drive 連携を有効にした場合、圧縮・暗号化済みのアーカイブファイルを Google Drive にアップロードし、共有リンクを生成することができます（Gmail の添付容量制限を超える大容量ファイルの共有等を想定した機能です）。</p>
+<ul>
+  <li>使用する OAuth 2.0 スコープは <code>drive.file</code> のみです</li>
+  <li><code>drive.file</code> スコープは <strong>「本アプリが作成したファイル」のみ</strong>にアクセス可能です。ユーザーの既存の Google Drive 内ファイル・フォルダを読み取る、一覧する、変更することはできません</li>
+  <li>本アプリは Google Drive 上に <code>SmooZip</code> フォルダを作成し、その配下に送信ごとのサブフォルダを生成してアーカイブファイルをアップロードします</li>
+  <li>アップロードされるのはユーザーが明示的に送信対象として選択したファイル（圧縮・暗号化済み）のみです</li>
+</ul>
+<p><strong>共有リンクのモードについて：</strong>ユーザーは送信時に以下の共有モードを選択できます。</p>
+<ul>
+  <li><strong>リンクを知っている全員：</strong>該当サブフォルダに「リンクを知っている全員」が閲覧可能な共有権限が付与されます</li>
+  <li><strong>特定のメールアドレスに共有：</strong>指定したメールアドレスの Google アカウントにのみ共有権限が付与されます</li>
+  <li><strong>共有リンクを付与しない（デフォルト）：</strong>共有権限は付与されず、受信者はオーナーへアクセスリクエストを行う必要があります</li>
+</ul>
+<p>付与した共有権限はユーザー自身が Google Drive から随時確認・変更・取消できます。本アプリが共有権限の付与に関与するのは、送信操作の時点のみです。</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-3. 共通事項</h3>
+<ul>
+  <li>認証トークンはデバイスの Keychain に保存され、開発者を含む第三者がアクセスすることはできません</li>
+  <li>トークンは Google 公式 SDK（Google Sign-In for iOS）により管理され、iCloud 同期は無効化されています</li>
+  <li>Google によるデータの取り扱いについては <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a> をご参照ください</li>
+</ul>
 <p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a> に準拠しています。Google から取得したデータを、Google の利用規約で許可された範囲を超えて使用・保存・共有することはありません。</p>
 
 <h2>4. 収集しない情報</h2>
@@ -97,15 +142,18 @@ window.addEventListener('load', function() {
 <h2>6. セキュリティ</h2>
 <p>本アプリは以下の技術的措置によりデータを保護しています。</p>
 <ul>
-  <li><strong>AES-256 暗号化：</strong>ZIP ファイルを業界標準の AES-256 で暗号化します</li>
-  <li><strong>Keychain 保護：</strong>認証トークンは macOS Keychain に保存され、デバイスのロック解除時のみアクセス可能です</li>
+  <li><strong>AES-256 暗号化：</strong>ZIP / 7-Zip ファイルを業界標準の AES-256 で暗号化します</li>
+  <li><strong>Keychain 保護：</strong>Google 認証トークンおよび暗号化 ZIP のパスワードは macOS Keychain に保存され、デバイスのロック解除時のみアクセス可能です。iCloud 同期は無効化されています</li>
   <li><strong>App Sandbox：</strong>macOS の App Sandbox によりファイルアクセスが制限されています</li>
+  <li><strong>暗号学的に安全なパスワード生成：</strong>パスワード自動生成機能は OS 提供の暗号学的に安全な乱数生成器（<code>SecRandomCopyBytes</code>）を使用します</li>
 </ul>
 
 <h2>7. データの削除</h2>
 <ul>
-  <li><strong>送付履歴：</strong>設定した日数（デフォルト 30 日）経過後に自動削除されます。また、アプリ内の履歴画面から手動で削除することもできます。アプリをアンインストールすると、すべての履歴データが削除されます。</li>
-  <li><strong>Gmail 認証トークン：</strong>アプリ内の「設定 → Gmail 連携解除」から削除できます。</li>
+  <li><strong>送付履歴：</strong>設定した日数（デフォルト 30 日）経過後に自動削除されます。また、アプリ内の履歴画面から手動で削除することもできます。履歴の削除時には、対応する暗号化パスワード（Keychain 内）も同時に削除されます。アプリをアンインストールすると、すべての履歴データが削除されます。</li>
+  <li><strong>送信先リスト・送信テンプレート：</strong>アプリ内の各管理画面から個別に、または一括で削除できます。</li>
+  <li><strong>Google 認証トークン（Gmail / Google Drive）：</strong>アプリ内の「設定 → Google アカウント連携解除」から削除できます。また、<a href="https://myaccount.google.com/permissions" target="_blank">Google アカウントのアプリ連携設定</a> からもアクセス権を取り消すことができます。</li>
+  <li><strong>Google Drive にアップロード済みのファイル：</strong>ユーザー自身の Google Drive の <code>SmooZip</code> フォルダ配下から、Google Drive の通常の操作により削除できます（本アプリからの削除機能は提供していません）。</li>
 </ul>
 
 <h2>8. ユーザーの権利</h2>
@@ -150,9 +198,9 @@ window.addEventListener('load', function() {
 <div class="lang-en" style="display:none;">
 
 <h1>Privacy Policy</h1>
-<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">Last updated: April 7, 2026</p>
+<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">Last updated: April 21, 2026</p>
 
-<p>SecureZip ("the App") is a macOS file compression and encryption application developed by Tkrite inc. ("the Developer"). This Privacy Policy explains what personal information the App handles, the legal basis for processing, and your rights as a user.</p>
+<p>SmooZip ("the App") is a macOS file compression and encryption application developed by Tkrite inc. ("the Developer"). This Privacy Policy explains what personal information the App handles, the legal basis for processing, and your rights as a user.</p>
 <p>By using the App, you agree to this Privacy Policy. If you do not agree, please discontinue use of the App.</p>
 
 <h2>1. Data Controller</h2>
@@ -175,32 +223,77 @@ window.addEventListener('load', function() {
     <th style="border:1px solid #d2d2d7;padding:8px 12px;background:#f5f5f7;text-align:left;">Retention Period</th>
   </tr>
   <tr>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Gmail authentication token</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Google authentication token (shared for Gmail / Google Drive)</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">Device Keychain (encrypted)</td>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">To provide email sending functionality via Gmail</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">To provide email sending via Gmail and file upload to Google Drive</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">Performance of a contract (Art. 6(1)(b))</td>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Until "Disconnect Gmail" or App uninstall</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Until "Disconnect Google Account" or App uninstall</td>
   </tr>
   <tr>
-    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Recipient email address, file name, send date/time</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Recipient email, file name, send date/time, delivery status</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">Local database on device (Core Data)</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">To display send history and support auto-deletion</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">Legitimate interests (Art. 6(1)(f)) / User consent</td>
     <td style="border:1px solid #d2d2d7;padding:8px 12px;">Automatically deleted after the number of days set by the user (default: 30 days)</td>
   </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Recipient list (email, name, company, phone, group)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Local database on device (Core Data)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">To support recipient reuse, batch sending, and CSV import</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">User consent (Art. 6(1)(a))</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Until manual deletion by the user / App uninstall</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Send templates (subject and body presets)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Local database on device (Core Data)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">To allow reuse of email content when sending</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">User consent (Art. 6(1)(a))</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Until manual deletion by the user / App uninstall</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Encryption passwords for sent archives (per history entry)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Device Keychain (encrypted)</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">To support separate password delivery and later reference</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Performance of a contract (Art. 6(1)(b))</td>
+    <td style="border:1px solid #d2d2d7;padding:8px 12px;">Automatically deleted when the corresponding history entry is removed (including by auto-deletion)</td>
+  </tr>
 </table>
 
-<p style="margin-top:12px;">All data is stored solely on the user's device. No data is transmitted to the Developer's servers or any cloud service operated by the Developer.</p>
+<p style="margin-top:12px;">All of the above data is stored solely on the user's device. No data is transmitted to the Developer's servers or to any cloud service operated by the Developer. (Data transmitted to Google via the Gmail / Google Drive APIs is described in Section 3.)</p>
 
-<h2>3. Use of Gmail API and Data Transmission</h2>
-<p>The App uses the Gmail API to send emails. When sending, the recipient's email address and the attached file are transmitted to Google's servers. This is essential to the email sending functionality.</p>
+<h2>3. Use of Google APIs (Gmail / Google Drive) and Data Transmission</h2>
+<p>The App uses Google APIs to provide email sending and large-file sharing functionality. The App only communicates with Google's servers when these features are enabled by the user.</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-1. Gmail API for Email Delivery</h3>
+<p>When Gmail integration is enabled, the recipient's email address, subject, body, and attached file are transmitted to Google's servers at the time of sending. This is essential to the email sending functionality.</p>
 <ul>
   <li>The only OAuth 2.0 scope used is <code>gmail.send</code></li>
   <li>The App does not read, delete, or access your emails or contacts</li>
-  <li>Authentication tokens are stored in your device's Keychain and are not accessible to the Developer or any third party</li>
-  <li>For details on how Google handles this data, please refer to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
 </ul>
 <p><strong>Separate Password Email Feature:</strong> When the "Send password in a separate email" option is enabled, the encryption password you set is included in plain text in the body of a separate email sent via Gmail. Please be aware that this password passes through and is stored on Google's mail infrastructure. A confirmation dialog is shown before each such transmission. If you have security concerns, we recommend sharing the password through an alternative channel (e.g., phone call or SMS) instead.</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-2. Google Drive API for File Sharing</h3>
+<p>When Google Drive integration is enabled, the App can upload the compressed (and optionally encrypted) archive to your Google Drive and generate a shareable link. This feature is intended for sharing large files that exceed Gmail's attachment size limit.</p>
+<ul>
+  <li>The only OAuth 2.0 scope used is <code>drive.file</code></li>
+  <li>The <code>drive.file</code> scope grants access <strong>only to files created by the App itself</strong>. The App cannot read, list, or modify any pre-existing files or folders in your Google Drive</li>
+  <li>The App creates a <code>SmooZip</code> folder on your Google Drive and uploads each archive into a timestamped subfolder beneath it</li>
+  <li>Only files that you explicitly select and send through the App (after compression / encryption) are uploaded</li>
+</ul>
+<p><strong>Sharing link modes:</strong> At the time of sending, you can choose one of the following:</p>
+<ul>
+  <li><strong>Anyone with the link:</strong> The subfolder is shared with view access to anyone who has the link</li>
+  <li><strong>Specific email address:</strong> The subfolder is shared only with the Google account of the specified email address</li>
+  <li><strong>No link / Request access (default):</strong> No sharing permission is granted; the recipient must request access from you as the owner</li>
+</ul>
+<p>You can review, modify, or revoke any sharing permissions at any time from Google Drive itself. The App only interacts with sharing permissions at the moment of sending.</p>
+
+<h3 style="font-size:1.05em;margin-top:24px;">3-3. Common Items</h3>
+<ul>
+  <li>Authentication tokens are stored in your device's Keychain and are not accessible to the Developer or any third party</li>
+  <li>Tokens are managed by Google's official SDK (Google Sign-In for iOS) and iCloud sync of Keychain items used by the App is disabled</li>
+  <li>For details on how Google handles this data, please refer to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+</ul>
 <p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>. Data obtained from Google APIs is not used, stored, or shared beyond what is permitted by Google's Terms of Service.</p>
 
 <h2>4. Information We Do Not Collect</h2>
@@ -219,15 +312,18 @@ window.addEventListener('load', function() {
 <h2>6. Security</h2>
 <p>The App uses the following technical measures to protect your data:</p>
 <ul>
-  <li><strong>AES-256 Encryption:</strong> ZIP files are encrypted using industry-standard AES-256</li>
-  <li><strong>Keychain Protection:</strong> Authentication tokens are stored in the macOS Keychain, accessible only when the device is unlocked</li>
+  <li><strong>AES-256 Encryption:</strong> ZIP / 7-Zip archives are encrypted using industry-standard AES-256</li>
+  <li><strong>Keychain Protection:</strong> Google authentication tokens and encryption passwords are stored in the macOS Keychain and are accessible only when the device is unlocked. iCloud sync of these items is disabled</li>
   <li><strong>App Sandbox:</strong> File access is restricted by macOS App Sandbox</li>
+  <li><strong>Cryptographically Secure Password Generation:</strong> The password generator uses the operating system's cryptographically secure random number generator (<code>SecRandomCopyBytes</code>)</li>
 </ul>
 
 <h2>7. Data Deletion</h2>
 <ul>
-  <li><strong>Send History:</strong> Automatically deleted after the number of days you configure (default: 30 days). You can also delete records manually from the History screen within the App. Uninstalling the App removes all history data.</li>
-  <li><strong>Gmail Authentication Token:</strong> Can be removed via Settings → Disconnect Gmail within the App.</li>
+  <li><strong>Send History:</strong> Automatically deleted after the number of days you configure (default: 30 days). You can also delete records manually from the History screen within the App. When a history entry is deleted, the corresponding encryption password in the Keychain is removed at the same time. Uninstalling the App removes all history data.</li>
+  <li><strong>Recipient List / Send Templates:</strong> Can be deleted individually or in bulk from the corresponding management screens within the App.</li>
+  <li><strong>Google Authentication Token (Gmail / Google Drive):</strong> Can be removed via Settings → Disconnect Google Account within the App. You can also revoke access at any time from your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account's third-party app settings</a>.</li>
+  <li><strong>Files Uploaded to Google Drive:</strong> Can be deleted directly from the <code>SmooZip</code> folder in your own Google Drive using standard Drive operations. (The App does not provide a Drive deletion feature.)</li>
 </ul>
 
 <h2>8. Your Privacy Rights</h2>

@@ -5,17 +5,17 @@
 # ============================================================
 
 # --- サイト基本情報 ---
-title: "Secure Zip"
+title: "Smoozip"
 description: "暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。"
 url: "https://tkrite.github.io"  # GitHub Pages の URL
-baseurl: "/securezip"             # リポジトリ名（user.github.io の場合は空）
+baseurl: "/Smoozip"              # リポジトリ名（user.github.io の場合は空）
 lang: "ja"
 
 # --- アプリ情報 ---
 app:
-  name: "Secure Zip"
+  name: "Smoozip"
   tagline: "ターミナル不要。ビジネスファイルを、安全に、かんたんに送る。"
-  description: "契約書・設計図・財務データなど、大切なファイルを安全に送りたい方へ。SecureZip for Mac は、AES-256暗号化・パスワード自動生成・Gmail送付をアプリ内で一気通貫で完結させる、Mac専用のセキュアファイル送付アプリです。ターミナル操作は一切不要です。"
+  description: "契約書・設計図・財務データなど、大切なファイルを安全に送りたい方へ。Smoozip for Mac は、AES-256暗号化・パスワード自動生成・Gmail送付をアプリ内で一気通貫で完結させる、Mac専用のセキュアファイル送付アプリです。ターミナル操作は一切不要です。"
   version: "1.0.0"
   icon: "/assets/images/app-icon.png"       # 512x512 推奨
   screenshot: "/assets/images/screenshot.png" # アプリのスクリーンショット
