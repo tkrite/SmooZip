@@ -28,15 +28,9 @@ app:
   support_email: "info@tkrite.com"
   support_youtube_channel: "https://www.youtube.com/@tkriteinc.7441"
   support_videos:
-    - title: "基本的な使い方"
+    - title: "アプリの使い方"
       youtube_id: "wqXKLnoFJ78"
-      description: "アプリの基本操作を動画で解説します。"
-    - title: "便利な機能の紹介"
-      youtube_id: "dGspxAT7oB8"
-      description: "知っておくと便利な機能をご紹介します。"
-    # - title: "よくある質問"
-    #   youtube_id: "xxxxxxxxxxx"
-    #   description: "よくいただくご質問にお答えします。"
+      description: "アプリの操作方法を動画で解説します。"
 
   # 機能一覧（トップページ用）
   features:
