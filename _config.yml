@@ -7,8 +7,8 @@
 # --- サイト基本情報 ---
 title: "SmooZip"
 description: "暗号化圧縮からGmail送付まで、ターミナル不要でビジネスファイルを安全に送るMacアプリ。"
-url: "https://tkrite.github.io"  # GitHub Pages の URL
-baseurl: "/SmooZip"              # リポジトリ名（user.github.io の場合は空）
+url: "https://smoozip.tkrite.com"  # カスタムドメイン（GitHub Pages）
+baseurl: ""                        # カスタムドメインのルートで配信するため空
 lang: "ja"
 
 # --- アプリ情報 ---
