@@ -330,6 +330,16 @@ a:hover { color: var(--color-primary-dark); }
   text-underline-offset: 3px;
 }
 
+.prose code {
+  font-family: 'SF Mono', 'Menlo', 'Consolas', 'Courier New', monospace;
+  font-size: 0.9em;                      /* em 明示で monospace 縮小バグを回避 */
+  padding: 0.1em 0.4em;
+  background: var(--color-bg-secondary);
+  border-radius: 4px;
+  color: var(--color-text);
+  word-break: break-word;                /* drive.file 等が改行で崩れないように */
+}
+
 /* ============================================================
    Support Page
    ============================================================ */
