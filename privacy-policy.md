@@ -3,7 +3,7 @@ layout: page
 title: プライバシーポリシー
 description: "プライバシーに関するデータの取り扱いについてご確認いただけます。"
 permalink: /privacy-policy/
-last_updated: "2026年4月21日"
+last_updated: "2026年6月25日"
 ---
 
 <div class="lang-switch" style="margin-bottom:32px;">
@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
 <div class="lang-ja">
 
 <h1>プライバシーポリシー</h1>
-<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">最終更新日：2026年4月21日</p>
+<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">最終更新日：2026年6月25日</p>
 
 <p>SmooZip（以下「本アプリ」）は、Tkrite inc.（以下「開発者」）が提供する macOS 向けファイル圧縮・暗号化アプリケーションです。本ポリシーは、本アプリがどのような個人情報を取り扱うか、その法的根拠、およびユーザーの皆様の権利について説明します。</p>
 <p>本アプリをご利用いただくことで、本ポリシーへの同意とみなします。同意いただけない場合は、本アプリのご利用をお控えください。</p>
@@ -128,7 +128,7 @@ window.addEventListener('load', function() {
   <li>トークンは Google 公式 SDK（Google Sign-In for iOS）により管理され、iCloud 同期は無効化されています</li>
   <li>Google によるデータの取り扱いについては <a href="https://policies.google.com/privacy" target="_blank">Google プライバシーポリシー</a> をご参照ください</li>
 </ul>
-<p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a> に準拠しています。Google から取得したデータを、Google の利用規約で許可された範囲を超えて使用・保存・共有することはありません。</p>
+<p>本アプリの Google API の利用は <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>（Limited Use 要件を含む）に準拠しています。Google から取得したデータを、Google の利用規約で許可された範囲を超えて使用・保存・共有することはありません。</p>
 
 <h2>4. 収集しない情報</h2>
 <p>本アプリは以下の情報を一切収集しません。</p>
@@ -141,7 +141,7 @@ window.addEventListener('load', function() {
 </ul>
 
 <h2>5. 第三者への情報提供</h2>
-<p>本アプリは、ユーザーの個人情報を第三者に<strong>販売しません</strong>。また、本ポリシーに定める場合（Gmail API によるメール送信）を除き、第三者に提供・共有することもありません。</p>
+<p>本アプリは、ユーザーの個人情報を第三者に<strong>販売しません</strong>。また、本ポリシーに定める場合（第3項に記載の Gmail API によるメール送信および Google Drive API によるファイルアップロード）を除き、第三者に提供・共有することもありません。</p>
 
 <h2>6. セキュリティ</h2>
 <p>本アプリは以下の技術的措置によりデータを保護しています。</p>
@@ -202,7 +202,7 @@ window.addEventListener('load', function() {
 <div class="lang-en" style="display:none;">
 
 <h1>Privacy Policy</h1>
-<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">Last updated: April 21, 2026</p>
+<p style="color:#6e6e73;font-size:0.9em;margin-bottom:32px;">Last updated: June 25, 2026</p>
 
 <p>SmooZip ("the App") is a macOS file compression and encryption application developed by Tkrite inc. ("the Developer"). This Privacy Policy explains what personal information the App handles, the legal basis for processing, and your rights as a user.</p>
 <p>By using the App, you agree to this Privacy Policy. If you do not agree, please discontinue use of the App.</p>
@@ -298,7 +298,7 @@ window.addEventListener('load', function() {
   <li>Tokens are managed by Google's official SDK (Google Sign-In for iOS) and iCloud sync of Keychain items used by the App is disabled</li>
   <li>For details on how Google handles this data, please refer to the <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
 </ul>
-<p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>. Data obtained from Google APIs is not used, stored, or shared beyond what is permitted by Google's Terms of Service.</p>
+<p>The App's use of Google APIs complies with the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>, including the Limited Use requirements. Data obtained from Google APIs is not used, stored, or shared beyond what is permitted by Google's Terms of Service.</p>
 
 <h2>4. Information We Do Not Collect</h2>
 <p>The App does not collect any of the following:</p>
@@ -311,7 +311,7 @@ window.addEventListener('load', function() {
 </ul>
 
 <h2>5. Sharing of Information</h2>
-<p>The App does <strong>not sell</strong> your personal information. We do not share or provide your personal information to any third party, except as necessary to transmit emails via the Gmail API as described in Section 3.</p>
+<p>The App does <strong>not sell</strong> your personal information. We do not share or provide your personal information to any third party, except as necessary to transmit emails via the Gmail API and to upload files via the Google Drive API, as described in Section 3.</p>
 
 <h2>6. Security</h2>
 <p>The App uses the following technical measures to protect your data:</p>
