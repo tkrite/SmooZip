@@ -5,4 +5,5 @@ gem "webrick" # Ruby 3.0+ で必要
 
 group :jekyll_plugins do
   gem "jekyll-remote-theme"
+  gem "jekyll-sitemap"
 end
